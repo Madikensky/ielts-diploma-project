@@ -1,0 +1,12 @@
+{
+    "arrowParens": "always",
+    "bracketSameLine": false,
+    "bracketSpacing": true,
+    "htmlWhitespaceSensitivity": "strict",
+    "jsxBracketSameLine": false,
+    "printWidth": 80,
+    "proseWrap": "always",
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "useTabs": false
+}
