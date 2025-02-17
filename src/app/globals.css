@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --font-size-default: 20px;
 }
 
 body {
   font-size: var(--font-size-default);
-}
+} */
