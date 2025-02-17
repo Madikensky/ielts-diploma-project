@@ -1,9 +1,7 @@
 import { LandingContent } from "@/pages/landing";
 import { FC } from "react";
 
-interface LandingProps {}
-
-const Landing: FC<LandingProps> = () => {
+const Landing: FC = () => {
   return <LandingContent />;
 };
 

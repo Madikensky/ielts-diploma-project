@@ -1,4 +1,4 @@
-import { Manrope, Sanchez } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -18,13 +18,14 @@ const manrope = Manrope({
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: "en" | "ru" }>;
 }) {
+  const { locale } = await params;
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale)) {
     notFound();
   }
 
