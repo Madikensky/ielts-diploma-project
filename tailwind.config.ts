@@ -11,6 +11,18 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        textCommon: "#C95559",
+        textWhite: "#fff",
+        textBlack: "#000",
+        textCorrectAnswer: "#389E48",
+        textWrongAnswer: "#EB2930",
+      },
+      backgroundColor: {
+        bgCommonShadowed: "#96393C",
+        bgCommon: "#C95559",
+        bgWhite: "#fff",
+        bgBlack: "#000",
+        bgCommonLight: "#E9777B",
       },
     },
   },
