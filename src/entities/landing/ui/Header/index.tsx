@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
+import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 
 export const Header = () => {

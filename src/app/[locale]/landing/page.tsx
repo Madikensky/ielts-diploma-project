@@ -1,4 +1,4 @@
-import { LandingContent } from "@/pages/landing";
+import { LandingContent } from "@/entities/landing";
 import { FC } from "react";
 
 const Landing: FC = () => {
