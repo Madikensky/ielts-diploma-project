@@ -1,5 +1,6 @@
 import { Manrope } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
@@ -37,7 +38,7 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={`${manrope.className} antialiased`}>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <AntdRegistry>{children}</AntdRegistry>
         </NextIntlClientProvider>
       </body>
     </html>
