@@ -1,5 +1,7 @@
+import { StaticImageData } from "next/image";
+
 export interface OfferProps {
-  imgSrc: string;
+  imgSrc: string | StaticImageData;
   offerType: string;
   description: string;
 }
