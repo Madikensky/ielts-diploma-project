@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
+import { theme } from "antd";
 
 export default {
+  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -24,7 +26,15 @@ export default {
         bgBlack: "#000",
         bgCommonLight: "#E9777B",
       },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
+  // corePlugins: {
+  //   preflight: false,
+  // },
 } satisfies Config;
