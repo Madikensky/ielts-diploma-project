@@ -7,17 +7,18 @@ import LandingReading from "@/shared/assets/images/landing-reading.svg";
 import LandingListening from "@/shared/assets/images/landing-listening.svg";
 import LandingSpeaking from "@/shared/assets/images/landing-speaking.svg";
 import LandingWriting from "@/shared/assets/images/landing-writing.svg";
-import SduLogo from "@/shared/assets/images/sdu-logo.svg";
 import "@ant-design/v5-patch-for-react-19";
+import { OurTeam } from "./ui/OurTeam";
+import { FAQ } from "./ui/FAQ";
 
 export const LandingContent: FC = () => {
   return (
     <>
       <Header />
-      <div className="p-10 flex flex-col gap-5">
+      <div className="p-10 flex flex-col gap-10">
         <section
           id="home"
-          className="flex flex-col text-textWhite text-3xl bg-bgCommonLight p-5 gap-10 rounded-xl font-semibold"
+          className="flex flex-col text-textWhite text-2xl md:text-3xl bg-bgCommonLight p-5 gap-10 rounded-xl font-semibold"
         >
           <div className="text-start">Get ready for the IELTS test</div>
           <div className="w-full flex items-center justify-center">
@@ -30,7 +31,7 @@ export const LandingContent: FC = () => {
           className="flex flex-col gap-10 items-center justify-center"
         >
           <h2 className="text-center text-2xl font-semibold">What we offer</h2>
-          <div className="grid grid-cols-1 grid-rows-2 gap-10 md:grid-cols-2">
+          <div className="grid grid-cols-1 grid-rows-2 gap-10 md:grid-cols-2 text-3xl">
             <Offer
               imgSrc={LandingReading}
               offerType="Reading"
@@ -53,37 +54,8 @@ export const LandingContent: FC = () => {
             />
           </div>
         </section>
-        <section
-          id="our_team"
-          className="p-10 bg-bgCommon flex flex-col gap-8 rounded-2xl text-textWhite font-semibold "
-        >
-          <div className="flex items-center justify-center">
-            <Image src={SduLogo} alt="" width={150} height={0} />
-          </div>
-          <div className="flex justify-between items-center flex-wrap gap-5">
-            {[
-              {
-                name: "Kenzhebayev Madiyar",
-                email: "210107098@stu.sdu.edu.kz",
-              },
-              { name: "Orazkhan Miras", email: "210107066@stu.sdu.edu.kz" },
-              {
-                name: "Maskeugaliyev Dauren",
-                email: "210103184@stu.sdu.edu.kz",
-              },
-            ].map(({ name, email }, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center w-full lg:w-auto p-2"
-              >
-                <p className="text-center">{name}</p>
-                <p className="text-center">{email}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex justify-center items-center">@7Easy.2025</div>
-        </section>
+        <FAQ />
+        <OurTeam />
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export const Offer: FC<OfferProps> = ({ imgSrc, offerType, description }) => {
   return (
-    <div className="flex flex-col gap-2 max-w-[300px]">
+    <div className="flex flex-col gap-2 max-w-[300px] text-xs">
       <div className="flex items-center justify-center max-w-[300px] rounded-xl bg-bgCommonLight">
         <Image src={imgSrc} alt="" width={200} height={0} />
       </div>

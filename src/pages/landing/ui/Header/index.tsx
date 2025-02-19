@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import ClickAwayListener from "react-click-away-listener";
 
 export const Header = () => {
@@ -33,7 +33,7 @@ export const Header = () => {
             "flex flex-row gap-6 items-center font-medium justify-end",
             isOpen
               ? "flex flex-wrap bg-white justify-start flex-col items-start shadow-md"
-              : "flex flex-wrap bg-white justify-start flex-col items-start lg:items-center lg:justify-end opacity-0 lg:flex-row lg:opacity-100",
+              : "flex flex-wrap bg-white justify-start flex-col items-start lg:items-center lg:justify-end opacity-0 pointer-events-none lg:flex-row lg:opacity-100 z-10",
             "lg:flex gap-6 absolute lg:static w-full left-0 top-16 p-4 transition-all duration-500",
           )}
         >
