@@ -22,6 +22,8 @@ const buttonVariants = cva(
         link: "text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50",
         landingBtn:
           "bg-bgCommon font-normal text-textWhite outline-none border-none",
+        authBtn:
+          "bg-bgCommon font-semibold text-textWhite outline-none border-none text-center rounded-[5px]",
       },
       size: {
         default: "h-9 px-4 py-2",
