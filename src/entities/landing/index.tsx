@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import { Header } from "./ui/Header";
+import { Header } from "@/shared/ui/Header";
 import { Offer } from "./ui/Offer";
 import LandingBackground from "@/shared/assets/images/landing-bg.png";
 import LandingReading from "@/shared/assets/images/landing-reading.png";

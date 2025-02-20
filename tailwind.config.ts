@@ -8,6 +8,7 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/entities/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/shared/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -26,6 +27,9 @@ export default {
         bgWhite: "#fff",
         bgBlack: "#000",
         bgCommonLight: "#E9777B",
+      },
+      borderColor: {
+        borderCommon: "#C95559",
       },
       borderRadius: {
         lg: "var(--radius)",
