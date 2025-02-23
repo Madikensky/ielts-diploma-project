@@ -16,3 +16,18 @@ html {
   scroll-behavior: smooth;
 }
 
+.ant-menu-item {
+  font-weight: 600;
+  background-color: white;
+  display: flex !important;
+  justify-content: start !important;
+}
+
+.ant-menu-item:focus {
+  color: white !important;
+}
+
+.ant-menu-item:hover {
+  color: white !important;
+}
+
