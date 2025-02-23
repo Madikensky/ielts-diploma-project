@@ -8,7 +8,7 @@ import LandingListening from "@/shared/assets/images/landing-listening.png";
 import LandingSpeaking from "@/shared/assets/images/landing-speaking.png";
 import LandingWriting from "@/shared/assets/images/landing-writing.png";
 import "@ant-design/v5-patch-for-react-19";
-import { Offer } from "@/widgets/landing/ui/Offer";
+import { Exam } from "@/shared/ui/Exam";
 import { FAQ } from "@/widgets/landing/ui/FAQ";
 import { OurTeam } from "@/widgets/landing/ui/OurTeam";
 
@@ -28,27 +28,27 @@ export default function Landing() {
           <div className="text-end">Learn. Practice. Achieve.</div>
         </section>
         <section
-          id="offerings"
+          id="Examings"
           className="flex flex-col gap-10 items-center justify-center"
         >
-          <h2 className="text-center text-2xl font-semibold">What we offer</h2>
+          <h2 className="text-center text-2xl font-semibold">What we Offer</h2>
           <div className="grid grid-cols-1 grid-rows-2 gap-10 md:grid-cols-2 text-3xl">
-            <Offer
+            <Exam
               imgSrc={LandingReading}
               offerType="Reading"
               description="Enhance your reading skills by analyzing complex texts and practicing comprehension of key ideas and details."
             />
-            <Offer
+            <Exam
               imgSrc={LandingSpeaking}
               offerType="Speaking"
               description="Practice your spoken English with AI assistance, boosting fluency, pronunciation, and confidence in responses."
             />
-            <Offer
+            <Exam
               imgSrc={LandingWriting}
               offerType="Writing"
               description="Improve your essay and letter writing with AI-powered feedback to refine structure, clarity, and coherence."
             />
-            <Offer
+            <Exam
               imgSrc={LandingListening}
               offerType="Listening"
               description="Train your ability to understand spoken English through diverse audio exercises and real-life scenarios."

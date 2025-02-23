@@ -116,15 +116,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               }}
             />
           </Header>
-          <Content
-            style={{
-              margin: "24px 16px",
-              padding: 24,
-              minHeight: 280,
-            }}
-          >
-            Content
+          <Content className="my-10 mx-6 p-6 min-h-[280px] bg-bgWhite rounded-xl overflow-y-auto">
+            {children}
           </Content>
+          <div className="text-textCommon text-center pb-5">7Easy</div>
         </Layout>
       </Layout>
     </ConfigProvider>
