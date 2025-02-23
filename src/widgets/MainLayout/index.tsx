@@ -1,30 +1,39 @@
 "use client";
 
-import React, { ReactNode, useState } from "react";
+import { Button as PrimaryButton } from "@/components/ui/button";
+import { usePathname } from "@/i18n/routing";
+import { themeConfig } from "@/shared/theme/themeConfig";
 import {
+  AudioOutlined,
+  EditOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   ReadOutlined,
   SoundOutlined,
-  UserOutlined,
-  AudioOutlined,
-  EditOutlined,
   UserDeleteOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu, theme, ConfigProvider } from "antd";
-import { themeConfig } from "@/shared/theme/themeConfig";
-import { useRouter } from "next/navigation";
-import { usePathname } from "@/i18n/routing";
 import "@ant-design/v5-patch-for-react-19";
+import { Button, ConfigProvider, Layout, Menu } from "antd";
 import { useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
+import React, { ReactNode, useState } from "react";
 
 const { Header, Sider, Content } = Layout;
 
 interface MainLayoutProps {
   children?: ReactNode;
+  title: string;
+  description?: string;
+  onClick?: () => void;
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+const MainLayout: React.FC<MainLayoutProps> = ({
+  children,
+  title,
+  description,
+  onClick,
+}) => {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter();
   const locale = useLocale();
@@ -117,6 +126,21 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             />
           </Header>
           <Content className="my-10 mx-6 p-6 min-h-[280px] bg-bgWhite rounded-xl overflow-y-auto">
+            <div className="flex flex-col gap-6">
+              <h2 className="font-semibold text-2xl">{title}</h2>
+              {description && (
+                <p className="text-md text-start">{description}</p>
+              )}
+              {onClick && (
+                <PrimaryButton
+                  onClick={onClick}
+                  variant={"primary"}
+                  className="w-[150px]"
+                >
+                  {"Start"}
+                </PrimaryButton>
+              )}
+            </div>
             {children}
           </Content>
           <div className="text-textCommon text-center pb-5">7Easy</div>
