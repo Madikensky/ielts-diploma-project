@@ -19,8 +19,8 @@ const HomePage = () => {
           "
       />
       <p className="mt-2">
-        Here are our simulators. Click on any of them to explore and practice
-        your skills.
+        Here are our simulators. Explore brief descriptions and enhance your
+        skills.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 mt-10 place-items-center gap-10">
         <Exam
