@@ -1,0 +1,16 @@
+{
+  "progress": {
+    "listening": 60,
+    "reading": 80,
+    "writing": 40,
+    "speaking": 70
+  },
+  "history": [
+    { "type": "listening", "date": "2025-02-15", "score": "7.0" },
+    { "type": "reading", "date": "2025-02-18", "score": "7.5" },
+    { "type": "writing", "date": "2025-02-20", "score": "6.0" },
+    { "type": "speaking", "date": "2025-02-22", "score": "7.5" },
+    { "type": "listening", "date": "2025-02-25", "score": "7.5" },
+    { "type": "reading", "date": "2025-02-27", "score": "8.0" }
+  ]
+}
