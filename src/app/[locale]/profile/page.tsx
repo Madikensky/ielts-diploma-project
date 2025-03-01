@@ -1,9 +1,8 @@
-import { ProgressBar } from "@/features/profile/ui/ProgressBar";
 import mockData from "@/features/profile/mock.json";
-import MainLayout from "@/widgets/MainLayout";
-import { ArrowRightOutlined, ArrowLeftOutlined } from "@ant-design/icons";
-import { FC } from "react";
 import { HistoryItem } from "@/features/profile/ui/HistoryItem";
+import { ProgressBar } from "@/features/profile/ui/ProgressBar";
+import MainLayout from "@/widgets/MainLayout";
+import { FC } from "react";
 
 const Profile: FC = () => {
   return (
