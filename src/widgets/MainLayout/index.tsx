@@ -9,7 +9,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   ReadOutlined,
-  SoundOutlined,
+  CustomerServiceOutlined,
   UserDeleteOutlined,
   UserOutlined,
 } from "@ant-design/icons";
@@ -83,7 +83,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                 },
                 {
                   key: "4",
-                  icon: <SoundOutlined />,
+                  icon: <CustomerServiceOutlined />,
                   label: "Listening",
                   onClick: () => router.push(`/${locale}/listening`),
                 },
