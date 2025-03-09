@@ -23,6 +23,7 @@ export const themeConfig: ThemeConfig = {
       itemBg: primaryColor,
       itemHoverBg: itemSelectedBg,
       itemHoverColor: itemSelectedColor,
+      itemActiveBg: "",
 
       //selected
       itemSelectedBg: itemSelectedBg,
