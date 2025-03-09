@@ -28,7 +28,7 @@ export default function Landing() {
           <div className="text-end">Learn. Practice. Achieve.</div>
         </section>
         <section
-          id="Examings"
+          id="offerings"
           className="flex flex-col gap-10 items-center justify-center"
         >
           <h2 className="text-center text-2xl font-semibold">What we Offer</h2>

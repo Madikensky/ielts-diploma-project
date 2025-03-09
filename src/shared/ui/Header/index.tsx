@@ -41,10 +41,10 @@ export const Header = () => {
 
             <div
               className={cn(
-                "flex flex-row gap-6 items-center font-medium justify-end ",
+                "flex flex-row gap-6 items-center font-medium justify-end",
                 isOpen
                   ? "flex flex-wrap bg-white justify-start flex-col items-start shadow-md"
-                  : "flex flex-wrap bg-white justify-start flex-col items-start lg:items-center lg:justify-end opacity-0  lg:flex-row lg:opacity-100 z-10",
+                  : "flex flex-wrap bg-white justify-start flex-col items-start lg:items-center lg:justify-end opacity-0 lg:flex-row lg:opacity-100 z-10",
                 "lg:flex gap-6 absolute lg:static w-full left-0 top-16 p-4 transition-all duration-500",
               )}
             >
