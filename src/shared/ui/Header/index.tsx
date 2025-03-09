@@ -92,7 +92,12 @@ export const Header = () => {
               >
                 Home
                 {activeSection === "home" && (
-                  <div className="border-2 rounded-xl absolute border-borderCommon w-full"></div>
+                  <div
+                    className={cn(
+                      "border-2 rounded-xl absolute border-borderCommon w-full",
+                      isOpen && "w-[70px]",
+                    )}
+                  ></div>
                 )}
               </Link>
               <Link
@@ -105,7 +110,12 @@ export const Header = () => {
               >
                 Offerings
                 {activeSection === "offerings" && (
-                  <div className="border-2 rounded-xl absolute border-borderCommon w-full"></div>
+                  <div
+                    className={cn(
+                      "border-2 rounded-xl absolute border-borderCommon w-full",
+                      isOpen && "w-[70px]",
+                    )}
+                  ></div>
                 )}
               </Link>
               <Link
@@ -118,7 +128,12 @@ export const Header = () => {
               >
                 FAQ
                 {activeSection === "faq" && (
-                  <div className="border-2 rounded-xl absolute border-borderCommon w-full"></div>
+                  <div
+                    className={cn(
+                      "border-2 rounded-xl absolute border-borderCommon w-full",
+                      isOpen && "w-[70px]",
+                    )}
+                  ></div>
                 )}
               </Link>
               <Link
@@ -131,7 +146,12 @@ export const Header = () => {
               >
                 Our Team
                 {activeSection === "our_team" && (
-                  <div className="border-2 rounded-xl absolute border-borderCommon w-full"></div>
+                  <div
+                    className={cn(
+                      "border-2 rounded-xl absolute border-borderCommon w-full",
+                      isOpen && "w-[70px]",
+                    )}
+                  ></div>
                 )}
               </Link>
               <Button
