@@ -9,13 +9,11 @@ import {
 
 const faqQuestions = [
   {
-    key: "1",
     question: "How does the 7Easy platform work?",
     answer:
       "7Easy helps you prepare for the IELTS exam by offering interactive training for all four sections of the test.",
   },
   {
-    ket: "2",
     question: "How do Reading and Listening exercises work?",
     answer:
       "These sections are presented as quizzes, similar to the official IELTS exam format.",
@@ -38,6 +36,13 @@ const faqQuestions = [
   {
     question: "Are there any limits on the number of attempts?",
     answer: "No, you can practice as many times as you want.",
+  },
+  {
+    key: "7",
+    question:
+      "How accurate is the AI-based feedback compared to real IELTS examiners?",
+    answer:
+      "While no AI can perfectly replicate human judgment, our system closely aligns with the IELTS marking criteria and provides detailed, actionable feedback that has helped many students improve their scores. We regularly update our AI models based on the latest IELTS guidelines to ensure accuracy and relevance.",
   },
 ];
 

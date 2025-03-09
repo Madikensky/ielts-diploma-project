@@ -5,13 +5,47 @@ import { usePathname } from "@/i18n/routing";
 import { cn } from "@/shared/lib/utils";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
+
+type HeaderLinks = "home" | "offerings" | "faq" | "our_team";
 
 export const Header = () => {
   const pathname = usePathname();
   const isAuth = pathname === "/auth";
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
+
+  const scrollToSection = (id: HeaderLinks) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.6 },
+    );
+
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => {
+      sectionObserver.observe(section);
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        sectionObserver.unobserve(section);
+      });
+    };
+  }, []);
 
   return (
     <ClickAwayListener
@@ -49,28 +83,56 @@ export const Header = () => {
               )}
             >
               <Link
-                className="text-textBlack no-underline w-full lg:w-auto"
+                className="text-textBlack no-underline w-full lg:w-auto relative"
                 href={"#home"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("home");
+                }}
               >
                 Home
+                {activeSection === "home" && (
+                  <div className="border-2 rounded-xl absolute border-borderCommon w-full"></div>
+                )}
               </Link>
               <Link
-                className="text-textBlack no-underline w-full lg:w-auto"
+                className="text-textBlack no-underline w-full lg:w-auto relative"
                 href={"#offerings"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("offerings");
+                }}
               >
                 Offerings
+                {activeSection === "offerings" && (
+                  <div className="border-2 rounded-xl absolute border-borderCommon w-full"></div>
+                )}
               </Link>
               <Link
-                className="text-textBlack no-underline w-full lg:w-auto"
+                className="text-textBlack no-underline w-full lg:w-auto relative"
                 href={"#faq"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("faq");
+                }}
               >
                 FAQ
+                {activeSection === "faq" && (
+                  <div className="border-2 rounded-xl absolute border-borderCommon w-full"></div>
+                )}
               </Link>
               <Link
-                className="text-textBlack no-underline w-full lg:w-auto"
+                className="text-textBlack no-underline w-full lg:w-auto relative"
                 href={"#our_team"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("our_team");
+                }}
               >
                 Our Team
+                {activeSection === "our_team" && (
+                  <div className="border-2 rounded-xl absolute border-borderCommon w-full"></div>
+                )}
               </Link>
               <Button
                 variant={"landingBtn"}
