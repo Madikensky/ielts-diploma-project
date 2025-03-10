@@ -31,3 +31,6 @@ html {
   color: white !important;
 }
 
+input[type="radio"] {
+  accent-color: #C95559; 
+}
