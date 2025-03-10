@@ -49,7 +49,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
 
   return (
     <ConfigProvider theme={themeConfig}>
-      <Layout className="h-dvh">
+      <Layout className="h-dvh overflow-auto">
         <Sider trigger={null} collapsible collapsed={collapsed} width={230}>
           <div className="flex flex-col h-full">
             <Menu
@@ -125,22 +125,24 @@ const MainLayout: React.FC<MainLayoutProps> = ({
               }}
             />
           </Header>
-          <Content className="my-10 mx-6 p-6 min-h-[280px] bg-bgWhite rounded-xl overflow-y-auto">
-            <div className="flex flex-col gap-6">
-              <h2 className="font-semibold text-2xl">{title}</h2>
-              {description && (
-                <p className="text-md text-start">{description}</p>
-              )}
-              {onClick && (
-                <PrimaryButton
-                  onClick={onClick}
-                  variant={"primary"}
-                  className="w-[150px]"
-                >
-                  {"Start"}
-                </PrimaryButton>
-              )}
-            </div>
+          <Content className="my-10 mx-6 p-6 min-h-[280px] bg-bgWhite rounded-xl overflow-auto">
+            <h2 className="font-semibold text-2xl mb-4">{title}</h2>
+            {!children && (
+              <div className="flex flex-col gap-6">
+                {description && (
+                  <p className="text-md text-start">{description}</p>
+                )}
+                {onClick && (
+                  <PrimaryButton
+                    onClick={onClick}
+                    variant={"primary"}
+                    className="w-[150px]"
+                  >
+                    {"Start"}
+                  </PrimaryButton>
+                )}
+              </div>
+            )}
             {children}
           </Content>
           <div className="text-textCommon text-center pb-5">7Easy</div>
