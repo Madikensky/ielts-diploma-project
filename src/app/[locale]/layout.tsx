@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Metadata } from "next";
 import "../globals.css";
+import QueryProvider from "@/queryProvider";
 
 export const metadata: Metadata = {
   title: "7Easy",
@@ -38,7 +39,9 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={`${manrope.className} antialiased`}>
         <NextIntlClientProvider messages={messages}>
-          <AntdRegistry>{children}</AntdRegistry>
+          <QueryProvider>
+            <AntdRegistry>{children}</AntdRegistry>
+          </QueryProvider>
         </NextIntlClientProvider>
       </body>
     </html>
