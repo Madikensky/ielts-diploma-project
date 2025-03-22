@@ -11,8 +11,8 @@ function authMiddleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`${locale}/auth`, request.url));
   }
 
-  if (pathname === "/auth" && access_token) {
-    return NextResponse.redirect(new URL(`${locale}/`, request.url));
+  if ((pathname === "/auth" || pathname == "") && access_token) {
+    return NextResponse.redirect(new URL(`${locale}/home`, request.url));
   }
 
   return NextResponse.next();

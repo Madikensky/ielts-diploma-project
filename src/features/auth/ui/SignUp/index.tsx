@@ -21,8 +21,8 @@ import { signUp } from "../../api/signUp";
 export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
   const mutation = useMutation({
     mutationFn: signUp,
-    onSuccess: (e) => {
-      console.log(e);
+    onSuccess: () => {
+      window.location.reload();
     },
     onError: (e) => {
       console.log(e);
