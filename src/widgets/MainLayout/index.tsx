@@ -18,6 +18,7 @@ import { Button, ConfigProvider, Layout, Menu } from "antd";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import React, { ReactNode, useState } from "react";
+import Cookies from "js-cookie";
 
 const { Header, Sider, Content } = Layout;
 
@@ -105,7 +106,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   label: "Log out",
                   danger: true,
                   onClick: () => {
-                    console.log("log out");
+                    Cookies.remove("access_token");
+                    router.push(`/${locale}/auth`);
                   },
                 },
               ]}
