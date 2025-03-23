@@ -105,13 +105,13 @@ const Writing: FC = () => {
                     </span>
                   </p>
                   <p className="font-semibold">
-                    AI's essay variant:{" "}
+                    AI&apos;s essay variant:{" "}
                     <span className="font-normal">{feedback.ai_essay}</span>
                   </p>
                 </div>
               ) : (
                 <div className="text-gray-500">
-                  AI's feedback will be here..
+                  AI&apos;s feedback will be here..
                 </div>
               )}
             </div>

@@ -9,7 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
 
 const Profile: FC = () => {
-  const { data, error, isLoading } = useQuery<ProfileI>({
+  const { data } = useQuery<ProfileI>({
     queryKey: ["profile"],
     queryFn: getProfile,
   });

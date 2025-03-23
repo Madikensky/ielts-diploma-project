@@ -1,7 +1,6 @@
 import createMiddleware from "next-intl/middleware";
-import { routing } from "./i18n/routing";
 import { NextRequest, NextResponse } from "next/server";
-import next from "next";
+import { routing } from "./i18n/routing";
 
 function authMiddleware(request: NextRequest) {
   const access_token = request.cookies.get("access_token");
