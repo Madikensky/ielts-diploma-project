@@ -2,17 +2,30 @@
 
 import { Button } from "@/components/ui/button";
 // import { Reading } from "@/features/reading/model/passage";
-import { getReadingTest } from "@/features/reading/api/reading";
-import { ReadingTest } from "@/features/reading/model/passage";
+import {
+  getReadingTest,
+  submitReadingTest,
+} from "@/features/reading/api/reading";
+import { ReadingTest, SubmitReadingI } from "@/features/reading/model/passage";
 import { PassageItem } from "@/features/reading/ui/PassageItem";
 import MainLayout from "@/widgets/MainLayout";
 import { useMutation } from "@tanstack/react-query";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import data from "./mock.json";
+import { AxiosError } from "axios";
 
 const Reading: FC = () => {
-  const { mutate, data } = useMutation<ReadingTest>({
+  const { mutate, data: data2 } = useMutation<ReadingTest>({
     mutationFn: getReadingTest,
+  });
+
+  const { mutate: submitReading, data: data3 } = useMutation<
+    unknown, // response type
+    AxiosError,
+    SubmitReadingI
+  >({
+    mutationFn: submitReadingTest,
   });
 
   const { control, handleSubmit } = useForm<{
@@ -43,15 +56,15 @@ const Reading: FC = () => {
               />
               {/* <PassageItem
                 control={control}
-                passageNumber={2}
-                passageQuestions={testData.part2.questions}
-                passageText={testData.part2.text}
-              />
-              <PassageItem
+                passageTitle={data.test[1].title}
+                passageQuestions={data.test[1].questions}
+                passageText={data.test[1].text}
+              /> */}
+              {/* <PassageItem
                 control={control}
-                passageNumber={3}
-                passageQuestions={testData.part3.questions}
-                passageText={testData.part3.text}
+                passageTitle={data.test[2].title}
+                passageQuestions={data.test[2].questions}
+                passageText={data.test[2].text}
               /> */}
             </div>
             <div className="mt-5 mb-8 text-end">

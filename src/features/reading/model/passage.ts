@@ -17,3 +17,14 @@ export interface Question {
   question: string;
   question_id: number;
 }
+
+export interface SubmitReadingI {
+  test_type: "reading";
+  test_id: number;
+  answers: Answer[];
+}
+
+interface Answer {
+  question_id: number;
+  answer: string;
+}

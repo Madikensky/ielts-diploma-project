@@ -1,482 +1,294 @@
 {
-  "part1": {
-    "text": "How the mind ages\n\nThe way mental function changes is largely determined by three factors - mental lifestyle, the impact of chronic disease and flexibility of the mind. Some of these factors are within our control, while others are not.\n\nAccording to Bahrick, 'the long-term residue of knowledge remains stable over the decades, independent of the age of the person and the memory.'\n\nPerhaps even more important than the ability to remember is the ability to manage memory - a mental function known as metamemory. 'You could say metamemory is a byproduct of going to school,' says psychologist Robert Kail of Purdue University, 'The question-and-answer process, especially exam taking, helps children learn and teaches them how their memory functions. This may be one reason why the better educated a person is, the more likely they are to perform well in many aspects of life and in psychological assessments: A group of adult novice chess players were compared with a group of child experts at the game. But when asked to remember the patterns of chess pieces arranged on a board, the children won.' Because they'd played a lot of chess, their knowledge of chess was better organized than that of the adults, and their existing knowledge of chess served as a framework for new memory,' explains Kail.\n\nCognitive style, another factor in maintaining mental function, is what Schaie calls the ability to adapt and roll with life's punches. 'He measured mental flexibility with questions and tests requiring people to carry out in an offbeat way an everyday activity they had done millions of times. One example was asking people to copy a paragraph substituting uppercase letters for lowercase ones. These tests seem silly, but flexible-minded people manage to complete them,' says Schaie. The rigid person responds with tension instead and performs poorly. 'Those who score highly on tests of cognition at an advanced age are those who tested high in mental flexibility at middle age'.\n\nOn a more optimistic note, one mental resource that only improves with time is specialized knowledge. Crystallized intelligence about one's occupation apparently does not decline at all until at least age 75. Vocabulary is another such specialized form of knowledge. Research clearly shows that vocabulary develops with time. Retired teachers and journalists consistently score higher on tests of vocabulary and general information than college students.",
-    "questions": [
-      {
-        "id": "b0a1bfbb-dd11-45b5-88f3-1bb2e9f1f085",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+  "test": [
+    {
+      "title": "Aphantasia: A life without mental images",
+      "text": "Close your eyes and imagine walking along a sandy beach and then gazing over the horizon as the Sun rises. How clear is the image that springs to mind?\n\nMost people can readily conjure images inside their head - known as their mind's eye. But this year scientists have described a condition, aphantasia, in which some people are unable to visualise mental images.\n\nNiel Kenmuir, from Lancaster, has always had a blind mind's eye. He knew he was different even in childhood. \"My stepfather, when I couldn't sleep, told me to count sheep, and he explained what he meant, I tried to do it and I couldn't,\" he says. \"I couldn't see any sheep jumping over fences, there was nothing to count.\"\n\nOur memories are often tied up in images, think back to a wedding or first day at school. As a result, Niel admits, some aspects of his memory are \"terrible\", but he is very good at remembering facts. And, like others with aphantasia, he struggles to recognise faces. Yet he does not see aphantasia as a disability, but simply a different way of experiencing life.\n\nMind's eye blind\n\nIronically, Niel now works in a bookshop, although he largely sticks to the non-fiction aisles. His condition begs the question what is going on inside his picture-less mind. I asked him what happens when he tries to picture his fiancee. \"This is the hardest thing to describe, what happens in my head when I think about things,\" he says. \"When I think about my fiancee there is no image, but I am definitely thinking about her, I know today she has her hair up at the back, she's brunette. But I'm not describing an image I am looking at, I'm remembering features about her, that's the strangest thing and maybe that is a source of some regret.\"\n\nThe response from his mates is a very sympathetic: \"You're weird.\" But while Niel is very relaxed about his inability to picture things, it is often a cause of distress for others. One person who took part in a study into aphantasia said he had started to feel \"isolated\" and \"alone\" after discovering that other people could see images in their heads. Being unable to reminisce about his mother years after her death led to him being \"extremely distraught\".\n\nThe super-visualiser\n\nAt the other end of the spectrum is children's book illustrator, Lauren Beard, whose work on the Fairytale Hairdresser series will be familiar to many six-year-olds. Her career relies on the vivid images that leap into her mind's eye when she reads text from her author. When I met her in her box-room studio in Manchester, she was working on a dramatic scene in the next book. The text describes a baby perilously climbing onto a chandelier.\n\n\"Straightaway I can visualise this grand glass chandelier in some sort of French kind of ballroom, and the little baby just swinging off it and really heavy thick curtains,\" she says. \"I think I have a strong imagination, so I can create the world and then keep adding to it so it gets sort of bigger and bigger in my mind and the characters too they sort of evolve. I couldn't really imagine what it's like to not imagine, I think it must be a bit of a shame really.\"\nNot many people have mental imagery as vibrant as Lauren or as blank as Niel. They are the two extremes of visualisation. Adam Zeman, a professor of cognitive and behavioural neurology, wants to compare the lives and experiences of people with aphantasia and its polar-opposite hyperphantasia. His team, based at the University of Exeter, coined the term aphantasia this year in a study in the journal Cortex.\n\nProf Zeman tells the BBC: \"People who have contacted us say they are really delighted that this has been recognised and has been given a name, because they have been trying to explain to people for years that there is this oddity that they find hard to convey to others.\" How we imagine is clearly very subjective - one person's vivid scene could be another's grainy picture. But Prof Zeman is certain that aphantasia is real. People often report being able to dream in pictures, and there have been reported cases of people losing the ability to think in images after a brain injury.\n\nHe is adamant that aphantasia is \"not a disorder\" and says it may affect up to one in 50 people. But he adds: \"I think it makes quite an important difference to their experience of life because many of us spend our lives with imagery hovering somewhere in the mind's eye which we inspect from time to time, it's a variability of human experience.\"",
+      "questions": [
+        {
+          "part": 1,
+          "question": "Aphantasia is a condition, which describes people, for whom it is hard to visualise mental images.",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 1,
+          "correct_answer": "FALSE"
         },
-        "question": "What are the three factors that largely determine how mental function changes?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:05:32.139397Z",
-        "updated_at": "2025-03-08T16:05:32.139397Z",
-        "answers": [
-          "Mental lifestyle, the impact of chronic disease, and flexibility of the mind",
-          "Memory, mental lifestyle, and cognitive style",
-          "Education, age, and physical fitness",
-          "Metamemory, vocabulary, and specialized knowledge"
-        ],
-        "correct_answer": "Mental lifestyle, the impact of chronic disease, and flexibility of the mind"
-      },
-      {
-        "id": "b0a2cfbb-dd11-45b5-88f3-1bb2e9f1f086",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 1,
+          "question": "Niel Kenmuir was unable to count sheep in his head",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 2,
+          "correct_answer": "TRUE"
         },
-        "question": "According to Bahrick, what is true about the long-term residue of knowledge?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:06:32.139397Z",
-        "updated_at": "2025-03-08T16:06:32.139397Z",
-        "answers": [
-          "It declines significantly with age",
-          "It remains stable over the decades",
-          "It improves only with specialized training",
-          "It depends on education level"
-        ],
-        "correct_answer": "It remains stable over the decades"
-      },
-      {
-        "id": "b0a3dfbb-dd11-45b5-88f3-1bb2e9f1f087",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 1,
+          "question": "People with aphantasia struggle to remember personal traits and clothes of different people.",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 3,
+          "correct_answer": "NOT GIVEN"
         },
-        "question": "What is metamemory?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:07:32.139397Z",
-        "updated_at": "2025-03-08T16:07:32.139397Z",
-        "answers": [
-          "The ability to memorize many facts",
-          "The ability to manage memory",
-          "A type of memory that only develops in old age",
-          "The ability to forget unpleasant memories"
-        ],
-        "correct_answer": "The ability to manage memory"
-      },
-      {
-        "id": "b0a4efbb-dd11-45b5-88f3-1bb2e9f1f088",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 1,
+          "question": "Niel regrets that he cannot portray an image of his fiancee in his mind.",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 4,
+          "correct_answer": "TRUE"
         },
-        "question": "According to Robert Kail, what contributes to the development of metamemory?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:08:32.139397Z",
-        "updated_at": "2025-03-08T16:08:32.139397Z",
-        "answers": [
-          "Playing chess",
-          "Physical exercise",
-          "Going to school and exam taking",
-          "Reading extensively"
-        ],
-        "correct_answer": "Going to school and exam taking"
-      },
-      {
-        "id": "b0a5ffbb-dd11-45b5-88f3-1bb2e9f1f089",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 1,
+          "question": "Inability to picture things in someone's head is often a cause of distress for a person",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 5,
+          "correct_answer": "TRUE"
         },
-        "question": "In the chess experiment described, why did the children outperform the adults?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:09:32.139397Z",
-        "updated_at": "2025-03-08T16:09:32.139397Z",
-        "answers": [
-          "The adults weren't trying hard enough",
-          "The children had faster reaction times",
-          "The children's knowledge of chess was better organized",
-          "The adults were distracted during the test"
-        ],
-        "correct_answer": "The children's knowledge of chess was better organized"
-      },
-      {
-        "id": "b0a6gfbb-dd11-45b5-88f3-1bb2e9f1f090",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 1,
+          "question": "All people with aphantasia start to feel 'isolated' or 'alone' at some point of their lives.",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 6,
+          "correct_answer": "NOT GIVEN"
         },
-        "question": "How does Schaie define cognitive style?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:10:32.139397Z",
-        "updated_at": "2025-03-08T16:10:32.139397Z",
-        "answers": [
-          "The ability to memorize information quickly",
-          "The ability to adapt and roll with life's punches",
-          "The ability to solve complex mathematical problems",
-          "The ability to learn new languages"
-        ],
-        "correct_answer": "The ability to adapt and roll with life's punches"
-      },
-      {
-        "id": "b0a7hfbb-dd11-45b5-88f3-1bb2e9f1f091",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 1,
+          "question": "Lauren Beard's career depends on her imagination.",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 7,
+          "correct_answer": "TRUE"
         },
-        "question": "What example does Schaie give of a test for mental flexibility?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:11:32.139397Z",
-        "updated_at": "2025-03-08T16:11:32.139397Z",
-        "answers": [
-          "Solving complex mathematical equations",
-          "Memorizing long sequences of numbers",
-          "Copying a paragraph substituting uppercase letters for lowercase ones",
-          "Playing strategic board games"
-        ],
-        "correct_answer": "Copying a paragraph substituting uppercase letters for lowercase ones"
-      },
-      {
-        "id": "b0a8ifbb-dd11-45b5-88f3-1bb2e9f1f092",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 1,
+          "question": "The author met Lauren Beard when she was working on a comedy scene in her next book.",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 8,
+          "correct_answer": "FALSE"
         },
-        "question": "According to the passage, what mental resource actually improves with time?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:12:32.139397Z",
-        "updated_at": "2025-03-08T16:12:32.139397Z",
-        "answers": [
-          "Memory recall",
-          "Specialized knowledge",
-          "Reaction time",
-          "Mathematical ability"
-        ],
-        "correct_answer": "Specialized knowledge"
-      },
-      {
-        "id": "b0a9jfbb-dd11-45b5-88f3-1bb2e9f1f093",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 1,
+          "question": " Only a small fraction of people have imagination as ___________ as Lauren does.",
+          "answers": [],
+          "question_id": 9,
+          "correct_answer": "Vibrant"
         },
-        "question": "Until what age does crystallized intelligence about one's occupation not decline?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:13:32.139397Z",
-        "updated_at": "2025-03-08T16:13:32.139397Z",
-        "answers": [
-          "Until age 65",
-          "Until age 70",
-          "Until at least age 75",
-          "Until age 80"
-        ],
-        "correct_answer": "Until at least age 75"
-      },
-      {
-        "id": "b0a0kfbb-dd11-45b5-88f3-1bb2e9f1f094",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 1,
+          "question": "Hyperphantasia is ___________ to aphantasia.",
+          "answers": [],
+          "question_id": 10,
+          "correct_answer": "Polar-opposite"
         },
-        "question": "According to the passage, who scores higher on tests of vocabulary and general information?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:14:32.139397Z",
-        "updated_at": "2025-03-08T16:14:32.139397Z",
-        "answers": [
-          "College students",
-          "Middle-aged adults",
-          "Retired teachers and journalists",
-          "Young professionals"
-        ],
-        "correct_answer": "Retired teachers and journalists"
-      }
-    ]
-  },
-  "part2": {
-    "text": "Ensuring our future food supply\n\nClimate change and new diseases threaten the limited varieties of seeds we depend on for food. Luckily, we still have many of the seeds used in the past - but we must take steps to save them.\n\nSix miles outside the town of Decorah, Iowa in the USA, an 890-acre stretch of rolling fields and woods called Heritage Farm is letting its crops go to seed. Everything about Heritage Farm is in stark contrast to the surrounding acres of intensively farmed fields of corn and soybean that are typical of modern agriculture. Heritage Farm is devoted to collecting rather than growing seeds. It is home to the Seed Savers Exchange, one of the largest non government-owned seed banks in the United States.\n\nIn 1975 Diane Ott Whealy was given the seedlings of two plant varieties that her great grandfather had brought to America from Bavaria in 1870: Grandpa Ott's morning glory and his German Pink tomato. Wanting to preserve similar traditional varieties, known as heirloom plants, Diane and her husband, Kent, decided to establish a place where the seeds of the past could be kept and traded. The exchange now has more than 13,000 members, and the many thousands of heirloom varieties they have donated are kept in its walk-in coolers, freezers, and root cellars the seeds of many thousands of heirloom varieties and, as you walk around an old red barn that is covered in Grandpa Ott's beautiful morning glory blossoms, you come across the different vegetables, herbs, and flowers they have planted there.\n\n\"Each year our members list their seeds in this,\" Diane Ott Whealy says, handing over a copy of the Seed Savers Exchange 2010 Yearbook. It is as thick as a big-city telephone directory, with page after page of exotic beans, garlic, potatoes, peppers, apples, pears, and plums - each with its own name and personal history. For example, there's an Estonian Yellow Cherry tomato, which was brought to the seed bank by 'an elderly Russian lady' who lived in Tallinn, and a Persian Star garlic from 'a bazaar in Samarkand.' There's also a bean donated by archaeologists searching for pygmy elephant fossils in New Mexico.\n\nFood variety extinction is happening all over the world - and it's happening fast. In the United States an estimated 90 percent of historic fruit and vegetable varieties are no longer grown. Of the 7,000 different apple varieties that were grown in the 1800s, fewer than a hundred remain. Experts estimate that in total we have lost more than 50 percent of the world's food varieties over the past century.\n\nWhy is this a problem? Because if disease or future climate change affects one of the handful of plants we've come to depend on to feed our growing planet, we might desperately need one of those varieties we've let become extinct.",
-    "questions": [
-      {
-        "id": "c0a1bfbb-ee11-45b5-88f3-1bb2e9f1f095",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 1,
+          "question": "There are a lot of subjectivity in comparing people's imagination - somebody's vivid scene could be another person's ___________.",
+          "answers": [],
+          "question_id": 11,
+          "correct_answer": "Grainy picture"
         },
-        "question": "Why is food variety extinction a serious problem?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:15:32.139397Z",
-        "updated_at": "2025-03-08T16:15:32.139397Z",
-        "answers": [
-          "Because it reduces the aesthetic appeal of crops",
-          "Because it makes food more expensive",
-          "Because it increases the risk of food shortages",
-          "Because it affects the soil quality"
-        ],
-        "correct_answer": "Because it increases the risk of food shortages"
-      },
-      {
-        "id": "c0a2cfbb-ee11-45b5-88f3-1bb2e9f1f096",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 1,
+          "question": "Prof Zeman is ___________ that aphantasia is not an illness.",
+          "answers": [],
+          "question_id": 12,
+          "correct_answer": "Adamant"
         },
-        "question": "What are the two main threats to seed varieties mentioned in the passage?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:16:32.139397Z",
-        "updated_at": "2025-03-08T16:16:32.139397Z",
-        "answers": [
-          "Deforestation and pollution",
-          "Climate change and new diseases",
-          "Urban development and pesticides",
-          "Industrialization and genetic modification"
-        ],
-        "correct_answer": "Climate change and new diseases"
-      },
-      {
-        "id": "c0a3dfbb-ee11-45b5-88f3-1bb2e9f1f097",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 1,
+          "question": "Many people spend their lives with ___________ somewhere in the mind's eye.",
+          "answers": [],
+          "question_id": 13,
+          "correct_answer": "Imagery hovering"
+        }
+      ]
+    },
+    {
+      "title": "Life lessons from villains, crooks and gangsters",
+      "text": "(A) A notorious Mexican drug baron’s audacious escape from prison in July doesn’t, at first, appear to have much to teach corporate boards. But some in the business world suggest otherwise. Beyond the morally reprehensible side of criminals' work, some business gurus say organised crime syndicates, computer hackers, pirates and others operating outside the law could teach legitimate corporations a thing or two about how to hustle and respond to rapid change.\n\n\n(B) Far from encouraging illegality, these gurus argue that – in the same way big corporations sometimes emulate start-ups – business leaders could learn from the underworld about flexibility, innovation and the ability to pivot quickly. “There is a nimbleness to criminal organisations that legacy corporations [with large, complex layers of management] don’t have,” said Marc Goodman, head of the Future Crimes Institute and global cyber-crime advisor. While traditional businesses focus on rules they have to follow, criminals look to circumvent them. “For criminals, the sky is the limit and that creates the opportunity to think much, much bigger.”\n\n\n\n(C) Joaquin Guzman, the head of the Mexican Sinaloa drug cartel, for instance, slipped out of his prison cell through a tiny hole in his shower that led to a mile-long tunnel fitted with lights and ventilation. Making a break for it required creative thinking, long-term planning and perseverance – essential skills similar to those needed to achieve success in big business.\n\n\n(D) While Devin Liddell, who heads brand strategy for Seattle-based design consultancy, Teague, condemns the violence and other illegal activities he became curious as to how criminal groups endure. Some cartels stay in business despite multiple efforts by law enforcement on both sides of the US border and millions of dollars from international agencies to shut them down. Liddell genuinely believes there’s a lesson in longevity here. One strategy he underlined was how the bad guys respond to change. In order to bypass the border between Mexico and the US, for example, the Sinaloa cartel went to great lengths. It built a vast underground tunnel, hired family members as border agents and even used a catapult to circumvent a high-tech fence.\n\n\n\n(E) By contrast, many legitimate businesses fail because they hesitate to adapt quickly to changing market winds. One high-profile example is movie and game rental company Blockbuster, which didn’t keep up with the market and lost business to mail order video rentals and streaming technologies. The brand has all but faded from view. Liddell argues the difference between the two groups is that criminal organisations often have improvisation encoded into their daily behaviour, while larger companies think of innovation as a set process. “This is a leadership challenge,” said Liddell. “How well companies innovate and organise is a reflection of leadership.”\n\n\nLeft-field thinking\n\n\n\n(F) Cash-strapped start-ups also use unorthodox strategies to problem solve and build their businesses up from scratch. This creativity and innovation is often borne out of necessity, such as tight budgets. Both criminals and start-up founders “question authority, act outside the system and see new and clever ways of doing things,” said Goodman. “Either they become Elon Musk or El Chapo.” And, some entrepreneurs aren’t even afraid to operate in legal grey areas in their effort to disrupt the marketplace. The co-founders of music streaming service Napster, for example, knowingly broke music copyright rules with their first online file sharing service, but their technology paved the way for legal innovation as regulators caught up.\n\n\n\n(G) Goodman and others believe thinking hard about problem solving before worrying about restrictions could prevent established companies falling victim to rivals less constrained by tradition. In their book The Misfit Economy, Alexa Clay and Kyra Maya Phillips examine how individuals can apply that mindset to become more innovative and entrepreneurial within corporate structures. They studied not just violent criminals like Somali pirates, but others who break the rules in order to find creative solutions to their business problems, such as people living in the slums of Mumbai or computer hackers. They picked out five common traits among this group: the ability to hustle, pivot, provoke, hack and copycat.\n\n\n(H) Clay gives a Saudi entrepreneur named Walid Abdul-Wahab as a prime example. Abdul-Wahab worked with Amish farmers to bring camel milk to American consumers even before US regulators approved it. Through perseverance, he eventually found a network of Amish camel milk farmers and started selling the product via social media. Now his company, Desert Farms, sells to giant mainstream retailers like Whole Foods Market. Those on the fringe don’t always have the option of traditional, corporate jobs and that forces them to think more creatively about how to make a living, Clay said. They must develop grit and resilience in order to last outside the cushy confines of cubicle life. “In many cases scarcity is the mother of invention,” Clay said.",
+      "questions": [
+        {
+          "part": 2,
+          "question": "Jailbreak with creative thinking _____.",
+          "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+          "question_id": 14,
+          "correct_answer": "C"
         },
-        "question": "What is Heritage Farm primarily devoted to?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:17:32.139397Z",
-        "updated_at": "2025-03-08T16:17:32.139397Z",
-        "answers": [
-          "Growing commercial crops",
-          "Researching new farming methods",
-          "Collecting seeds rather than growing them",
-          "Developing pesticide-resistant plants"
-        ],
-        "correct_answer": "Collecting seeds rather than growing them"
-      },
-      {
-        "id": "c0a4efbb-ee11-45b5-88f3-1bb2e9f1f098",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 2,
+          "question": "Five common traits among rule-breakers _____.",
+          "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+          "question_id": 15,
+          "correct_answer": "G"
         },
-        "question": "When was Diane Ott Whealy given seedlings by her great grandfather?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:18:32.139397Z",
-        "updated_at": "2025-03-08T16:18:32.139397Z",
-        "answers": ["In 1870", "In 1975", "In 1950", "In 2010"],
-        "correct_answer": "In 1975"
-      },
-      {
-        "id": "c0a5ffbb-ee11-45b5-88f3-1bb2e9f1f099",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 2,
+          "question": "Comparison between criminals and traditional businessmen _____.",
+          "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+          "question_id": 16,
+          "correct_answer": "B"
         },
-        "question": "Where does the Seed Savers Exchange store its seeds?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:19:32.139397Z",
-        "updated_at": "2025-03-08T16:19:32.139397Z",
-        "answers": [
-          "In government facilities",
-          "In underground vaults",
-          "In walk-in coolers, freezers, and root cellars",
-          "In specially designed greenhouses"
-        ],
-        "correct_answer": "In walk-in coolers, freezers, and root cellars"
-      },
-      {
-        "id": "c0a6gfbb-ee11-45b5-88f3-1bb2e9f1f100",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 2,
+          "question": "Can drug baron's espace teach legitimate corporations? _____.",
+          "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+          "question_id": 17,
+          "correct_answer": "A"
         },
-        "question": "How many members does the Seed Savers Exchange have?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:20:32.139397Z",
-        "updated_at": "2025-03-08T16:20:32.139397Z",
-        "answers": [
-          "More than 1,000 members",
-          "More than 5,000 members",
-          "More than 13,000 members",
-          "More than 20,000 members"
-        ],
-        "correct_answer": "More than 13,000 members"
-      },
-      {
-        "id": "c0a7hfbb-ee11-45b5-88f3-1bb2e9f1f101",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 2,
+          "question": "Great entrepreneur _____.",
+          "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+          "question_id": 18,
+          "correct_answer": "H"
         },
-        "question": "What is the Seed Savers Exchange 2010 Yearbook compared to in terms of its size?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:21:32.139397Z",
-        "updated_at": "2025-03-08T16:21:32.139397Z",
-        "answers": [
-          "A magazine",
-          "A catalog",
-          "A big-city telephone directory",
-          "A novel"
-        ],
-        "correct_answer": "A big-city telephone directory"
-      },
-      {
-        "id": "c0a8ifbb-ee11-45b5-88f3-1bb2e9f1f102",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 2,
+          "question": "How criminal groups deceive the law _____.",
+          "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+          "question_id": 19,
+          "correct_answer": "D"
         },
-        "question": "What percentage of historic fruit and vegetable varieties are no longer grown in the United States?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:22:32.139397Z",
-        "updated_at": "2025-03-08T16:22:32.139397Z",
-        "answers": ["50 percent", "75 percent", "90 percent", "99 percent"],
-        "correct_answer": "90 percent"
-      },
-      {
-        "id": "c0a9jfbb-ee11-45b5-88f3-1bb2e9f1f103",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 2,
+          "question": "The difference between legal and illegal organisations _____.",
+          "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+          "question_id": 20,
+          "correct_answer": "E"
         },
-        "question": "How many different apple varieties were grown in the 1800s according to the passage?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:23:32.139397Z",
-        "updated_at": "2025-03-08T16:23:32.139397Z",
-        "answers": ["About 1,000", "About 3,000", "About 5,000", "About 7,000"],
-        "correct_answer": "About 7,000"
-      },
-      {
-        "id": "c0a0kfbb-ee11-45b5-88f3-1bb2e9f1f104",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 2,
+          "question": "Similarity between criminals and start-up founders _____.",
+          "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+          "question_id": 21,
+          "correct_answer": "F"
         },
-        "question": "What percentage of the world's food varieties have been lost over the past century according to experts?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:24:32.139397Z",
-        "updated_at": "2025-03-08T16:24:32.139397Z",
-        "answers": [
-          "More than 25 percent",
-          "More than 50 percent",
-          "More than 75 percent",
-          "More than 90 percent"
-        ],
-        "correct_answer": "More than 50 percent"
-      }
-    ]
-  },
-  "part3": {
-    "text": "The fluoridation controversy\n\nThe long-standing debate about whether to fluoridate our drinking water continues. Fluoridation is the addition of fluorine to public water supplies with the aim of reducing tooth decay. \n\nThe fluorine, when mixed with water, becomes fluoride and the desired concentration of fluoride in public water is approximately one part per million, depending on the regional temperature and hence the amount of water people are likely to drink. Many studies, such as those by McClure in 1970 through to Burt in 1983, have shown that when children drink fluoridated water, their average rate of tooth decay seems greatly reduced. A typical figure claimed is 50 percent reduction. This apparently enormous benefit for children's teeth is the major argument in favor of fluoridation.\n\nAn understanding of the fluoridation issue has important implications. If, according to the experts, fluoridation is unquestionably a beneficial and non-hazardous measure, then the wisdom of allowing the public to vote on, and reject it must be questioned.\n\nKuhn (1970) argued that scientific knowledge does not always develop as an orderly process, but is characterized by periodic revolutions. in which the methods of study and the assessment criteria change in a fragmented way. According to Kuhn, the shift from one scientific way of thinking to another is not made solely on the basis of clear rules of formal scientific practice, but can include social factors.\n\nBoth arguments consider the scientific evidence concerning fluoridation, but differ in their assessments of the social benefits and costs. This difference is not between rationality and irrationality but is a legitimate difference in values.",
-    "questions": [
-      {
-        "id": "d0a1bfbb-ff11-45b5-88f3-1bb2e9f1f105",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 2,
+          "question": "To escape from a prison, Joaquin Guzman had to use such traits as creative thinking, long-term planning and _____ .",
+          "answers": [],
+          "question_id": 22,
+          "correct_answer": "Perseverance"
         },
-        "question": "What is the primary argument in favor of fluoridation?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:25:32.139397Z",
-        "updated_at": "2025-03-08T16:25:32.139397Z",
-        "answers": [
-          "It improves the taste of drinking water",
-          "It significantly reduces tooth decay in children",
-          "It eliminates the need for dental hygiene",
-          "It prevents water contamination"
-        ],
-        "correct_answer": "It significantly reduces tooth decay in children"
-      },
-      {
-        "id": "d0a2cfbb-ff11-45b5-88f3-1bb2e9f1f106",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 2,
+          "question": "The Sinaloa cartel built a grand underground tunnel and even used a _____ to avoid the fence.",
+          "answers": [],
+          "question_id": 23,
+          "correct_answer": "Catapult"
         },
-        "question": "What is fluoridation?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:26:32.139397Z",
-        "updated_at": "2025-03-08T16:26:32.139397Z",
-        "answers": [
-          "The natural process of water purification",
-          "The addition of fluorine to public water supplies",
-          "The removal of contaminants from drinking water",
-          "The process of bottling mineral water"
-        ],
-        "correct_answer": "The addition of fluorine to public water supplies"
-      },
-      {
-        "id": "d0a3dfbb-ff11-45b5-88f3-1bb2e9f1f107",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 2,
+          "question": "The main difference between two groups is that criminals, unlike large corporations, often have _____ encoded into their daily life.",
+          "answers": [],
+          "question_id": 24,
+          "correct_answer": "Improvisation"
         },
-        "question": "What is the desired concentration of fluoride in public water?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:27:32.139397Z",
-        "updated_at": "2025-03-08T16:27:32.139397Z",
-        "answers": [
-          "One part per thousand",
-          "One part per million",
-          "One part per billion",
-          "One part per hundred"
-        ],
-        "correct_answer": "One part per million"
-      },
-      {
-        "id": "d0a4efbb-ff11-45b5-88f3-1bb2e9f1f108",
-        "status": "active",
-        "test": {
-          "__cardinality__": "one",
-          "__field__": "test",
-          "__owner__": "Elixir.App.Tests.Schemas.Question"
+        {
+          "part": 2,
+          "question": "Due to being persuasive, Walid Abdul-Wahab found a _____ of Amish camel milk farmers.",
+          "answers": [],
+          "question_id": 25,
+          "correct_answer": "Network"
         },
-        "question": "According to the passage, what factors influence the desired concentration of fluoride in public water?",
-        "test_id": "768bbe02-c015-45b9-9124-88463a147c2e",
-        "inserted_at": "2025-03-08T16:28:32.139397Z",
-        "updated_at": "2025-03-08T16:28:32.139397Z",
-        "answers": [
-          "Water quality and pollution levels",
-          "Regional temperature and amount of water people drink",
-          "Age distribution of the population",
-          "Local dental health statistics"
-        ],
-        "correct_answer": "Regional temperature and amount of water people drink"
-      }
-    ]
-  }
+        {
+          "part": 2,
+          "question": "The main goal of this article is to: ",
+          "answers": [
+            "Show different ways of illegal activity",
+            "Give an overview of various criminals and their gangs",
+            "Draw a comparison between legal and illegal business, providing examples",
+            "Justify criminals with creative thinking"
+          ],
+          "question_id": 26,
+          "correct_answer": "Draw a comparison between legal and illegal business, providing examples"
+        }
+      ]
+    },
+    {
+      "title": "Britain needs strong TV industry",
+      "text": "Comedy writer Armando Iannucci has called for an industry-wide defence of the BBC and British programme-makers. \"The Thick of It\" creator made his remarks in the annual MacTaggart Lecture at the Edinburgh TV Festival.\n\n\"It's more important than ever that we have more strong, popular channels... that act as beacons, drawing audiences to the best content,\" he said. Speaking earlier, Culture Secretary John Whittingdale rejected suggestions that he wanted to dismantle the BBC.\n\n'Champion supporters'\n\nIannucci co-wrote \"I'm Alan Partridge\", wrote the movie \"In the Loop\" and created and wrote the hit \"HBO\" and \"Sky Atlantic show Veep\". He delivered the 40th annual MacTaggart Lecture, which has previously been given by Oscar winner Kevin Spacey, former BBC director general Greg Dyke, Jeremy Paxman and Rupert Murdoch. Iannucci said: \"Faced with a global audience, British television needs its champion supporters.\"\n\nHe continued his praise for British programming by saying the global success of American TV shows had come about because they were emulating British television. \"The best US shows are modelling themselves on what used to make British TV so world-beating,\" he said. \"US prime-time schedules are now littered with those quirky formats from the UK - the \"Who Do You Think You Are\"'s and the variants on \"Strictly Come Dancing\" - as well as the single-camera non-audience sitcom, which we brought into the mainstream first. We have changed international viewing for the better.\"\n\nWith the renewal of the BBC's royal charter approaching, Iannucci also praised the corporation. He said: \"If public service broadcasting - one of the best things we've ever done creatively as a country - if it was a car industry, our ministers would be out championing it overseas, trying to win contracts, boasting of the British jobs that would bring.\" In July, the government issued a green paper setting out issues that will be explored during negotiations over the future of the BBC, including the broadcaster's size, its funding and governance.\n\nPrimarily Mr Whittingdale wanted to appoint a panel of five people, but finally he invited two more people to advise on the channer renewal, namely former Channel 4 boss Dawn Airey and journalism professor Stewart Purvis, a former editor-in-chief of ITN. Iannucci bemoaned the lack of \"creatives\" involved in the discussions.\n\n\"When the media, communications and information industries make up nearly 8% our GDP, larger than the car and oil and gas industries put together, we need to be heard, as those industries are heard. But when I see the panel of experts who've been asked by the culture secretary to take a root and branch look at the BBC, I don't see anyone who is a part of that cast and crew list. I see executives, media owners, industry gurus, all talented people - but not a single person who's made a classic and enduring television show.\"\n\n'Don't be modest'\n\nIannucci suggested one way of easing the strain on the licence fee was \"by pushing ourselves more commercially abroad\".\n\n\"Use the BBC's name, one of the most recognised brands in the world,\" he said. \"And use the reputation of British television across all networks, to capitalise financially oversees. Be more aggressive in selling our shows, through advertising, through proper international subscription channels, freeing up BBC Worldwide to be fully commercial, whatever it takes.\n\n\"Frankly, don't be icky and modest about making money, let's monetise the bezeesus Mary and Joseph out of our programmes abroad so that money can come back, take some pressure off the licence fee at home and be invested in even more ambitious quality shows, that can only add to our value.\"\n\nMr Whittingdale, who was interviewed by ITV News' Alastair Stewart at the festival, said he wanted an open debate about whether the corporation should do everything it has done in the past.  He said he had a slight sense that people who rushed to defend the BBC were \"trying to have an argument that's never been started\".\n\n\"Whatever my view is, I don't determine what programmes the BBC should show,\" he added. \"That's the job of the BBC.\" Mr Whittingdale said any speculation that the Conservative Party had always wanted to change the BBC due to issues such as its editorial line was \"absolute nonsense",
+      "questions": [
+        {
+          "part": 3,
+          "question": "Armando Iannucci expressed a need of having more popular channels.",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 27,
+          "correct_answer": "TRUE"
+        },
+        {
+          "part": 3,
+          "question": "John Whittingdale wanted to dismantle the BBC.",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 28,
+          "correct_answer": "FALSE"
+        },
+        {
+          "part": 3,
+          "question": "Iannucci delivered the 30th annual MacTaggart Lecture.",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 29,
+          "correct_answer": "NOT GIVEN"
+        },
+        {
+          "part": 3,
+          "question": "Iannucci believes that British television has contributed to the success of American TV-shows.",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 30,
+          "correct_answer": "TRUE"
+        },
+        {
+          "part": 3,
+          "question": "There have been negotiations over the future of the BBC in July.",
+          "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+          "question_id": 31,
+          "correct_answer": "FALSE"
+        },
+        {
+          "part": 3,
+          "question": "Iannucci praised everything EXCEPT",
+          "answers": [
+            "US shows",
+            "British shows",
+            "Corporation",
+            "British programming"
+          ],
+          "question_id": 32,
+          "correct_answer": "US shows"
+        },
+        {
+          "part": 3,
+          "question": "To advise on the charter renewal Mr Whittingdale appointed a panel of",
+          "answers": [
+            "five people",
+            "two people",
+            "seven people",
+            "four people"
+          ],
+          "question_id": 33,
+          "correct_answer": "seven people"
+        },
+        {
+          "part": 3,
+          "question": "Who of these people was NOT invited to the discussion concerning BBC renewal?",
+          "answers": [
+            "Armando Iannucci",
+            "Dawn Airey",
+            "John Whittingdale",
+            "Stewart Purvis"
+          ],
+          "question_id": 34,
+          "correct_answer": "Armando Iannucci"
+        },
+        {
+          "part": 3,
+          "question": "There panel of experts lacks:",
+          "answers": [
+            "media owners",
+            "people who make enduring TV-shows",
+            "gurus of Television industry",
+            "top executives"
+          ],
+          "question_id": 35,
+          "correct_answer": "people who make enduring TV-shows"
+        }
+      ]
+    }
+  ],
+  "reading_id": 1,
+  "question_count": 35
 }
