@@ -14,6 +14,12 @@ export const HistoryItem: FC<HistoryItemProps> = ({ type, date, score }) => {
     speaking: <AudioOutlined style={{ color: "white" }} />,
     writing: <EditOutlined style={{ color: "white" }} />,
   };
+  const parsedDate = new Date(date).toLocaleString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+
   return (
     <div className="flex flex-row items-center pl-2">
       <div className="bg-bgCommon p-4 rounded-xl flex justify-center items-center w-[45px] h-[45px]">
@@ -23,7 +29,7 @@ export const HistoryItem: FC<HistoryItemProps> = ({ type, date, score }) => {
         <div className="flex flex-col gap-1">
           <span className="text-base font-semibold capitalize">{type}</span>
           <span className="text-sm font-semibold text-neutral-600/60">
-            {date}
+            {parsedDate}
           </span>
         </div>
         <div className="text-base font-semibold">{score}</div>
