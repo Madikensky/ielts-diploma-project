@@ -9,7 +9,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({ type, value }) => {
       <h2 className="font-semibold text-lg text-start">{type}</h2>
       <Progress value={finalValue * 10} />
       <div className="text-neutral-900/50 text-xs text-end font-semibold">
-        {value}
+        {value} / 9 Band
       </div>
     </div>
   );

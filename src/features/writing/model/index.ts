@@ -6,6 +6,7 @@ export interface getWritingTestI {
 export interface postWritingTestI {
   essay: string;
   test_id: number;
+  test_type: "writing";
 }
 
 export interface WritingFeedback {

@@ -30,6 +30,7 @@ const Writing: FC = () => {
   const [wordCount, setWordCount] = useState<number>(0);
   const [text, setText] = useState<string>("");
 
+  console.log(text.trim().length);
   useEffect(() => {
     setWordCount(text.trim().split(/\s+/).length);
   }, [text]);
@@ -63,10 +64,12 @@ const Writing: FC = () => {
                 <Button
                   type="button"
                   variant={"primary"}
+                  disabled={wordCount <= 1}
                   onClick={() => {
                     submitWriting({
                       test_id: data?.test_id,
                       essay: text,
+                      test_type: "writing",
                     });
                   }}
                 >
