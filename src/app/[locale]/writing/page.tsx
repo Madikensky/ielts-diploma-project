@@ -30,9 +30,8 @@ const Writing: FC = () => {
   const [wordCount, setWordCount] = useState<number>(0);
   const [text, setText] = useState<string>("");
 
-  console.log(text.trim().length);
   useEffect(() => {
-    setWordCount(text.trim().split(/\s+/).length);
+    setWordCount(text.trim().length > 0 ? text.trim().split(/\s+/).length : 0);
   }, [text]);
 
   return (
@@ -49,7 +48,7 @@ const Writing: FC = () => {
           <p>
             Your essay topis is: <span className="font-bold">{data.task}</span>
           </p>
-          <div className="flex flex-row h-full  border-blue-300 gap-5 mt-5">
+          <div className="flex flex-row flex-1 min-h-[350px] border-blue-300 gap-5 mt-5">
             <div className="flex flex-col gap-4 w-1/2">
               <Textarea
                 className="border-2 border-borderCommon rounded-xl w-full h-full flex flex-col gap-3"

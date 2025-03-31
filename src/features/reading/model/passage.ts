@@ -24,7 +24,7 @@ export interface SubmitReadingI {
   answers: Answer[];
 }
 
-interface Answer {
+export interface Answer {
   question_id: number;
   answer: string;
 }

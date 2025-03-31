@@ -15,7 +15,7 @@ const Profile: FC = () => {
   });
 
   return (
-    <MainLayout title="Your Progress (average scores)">
+    <MainLayout title="Your Progress">
       <div className="mt-5">
         <ProgressBar
           type={"Listening"}

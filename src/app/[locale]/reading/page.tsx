@@ -6,17 +6,25 @@ import {
   getReadingTest,
   submitReadingTest,
 } from "@/features/reading/api/reading";
-import { ReadingTest, SubmitReadingI } from "@/features/reading/model/passage";
+import {
+  Answer,
+  ReadingTest,
+  SubmitReadingI,
+} from "@/features/reading/model/passage";
 import { PassageItem } from "@/features/reading/ui/PassageItem";
 import MainLayout from "@/widgets/MainLayout";
 import { useMutation } from "@tanstack/react-query";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import data from "./mock.json";
 import { AxiosError } from "axios";
 
-const Reading: FC = () => {
-  const { mutate, data: data2 } = useMutation<ReadingTest>({
+interface ReadingProps {
+  subtitle?: string;
+  setSubtitle?: (value: string) => void;
+}
+
+const Reading: FC<ReadingProps> = ({ subtitle, setSubtitle }) => {
+  const { mutate, data } = useMutation<ReadingTest>({
     mutationFn: getReadingTest,
   });
 
@@ -33,7 +41,18 @@ const Reading: FC = () => {
   }>();
 
   const onSubmit = (data: { [key: string]: string }) => {
-    console.log(data);
+    const transformed = Object.entries(data).map(([k, v]) => {
+      return {
+        question_id: +k.replace("question_", ""),
+        answer: v,
+      };
+    });
+    console.log(transformed);
+    submitReading({
+      test_id: 1,
+      test_type: "reading",
+      answers: transformed,
+    });
   };
 
   return (
@@ -54,18 +73,18 @@ const Reading: FC = () => {
                 passageQuestions={data.test[0].questions}
                 passageText={data.test[0].text}
               />
-              {/* <PassageItem
+              <PassageItem
                 control={control}
                 passageTitle={data.test[1].title}
                 passageQuestions={data.test[1].questions}
                 passageText={data.test[1].text}
-              /> */}
-              {/* <PassageItem
+              />
+              <PassageItem
                 control={control}
                 passageTitle={data.test[2].title}
                 passageQuestions={data.test[2].questions}
                 passageText={data.test[2].text}
-              /> */}
+              />
             </div>
             <div className="mt-5 mb-8 text-end">
               <Button type="submit" variant={"primary"}>

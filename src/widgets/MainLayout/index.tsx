@@ -23,7 +23,7 @@ import Cookies from "js-cookie";
 const { Header, Sider, Content } = Layout;
 
 interface MainLayoutProps {
-  children?: ReactNode;
+  children: ReactNode;
   title: string;
   description?: string;
   onClick?: () => void;
@@ -36,6 +36,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   onClick,
 }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [timer, setTimer] = useState("3600 ");
   const router = useRouter();
   const locale = useLocale();
   const pathname = usePathname();
@@ -127,10 +128,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({
               }}
             />
           </Header>
-          <Content className="my-10 mx-6 p-6 min-h-[280px] bg-bgWhite rounded-xl overflow-auto">
-            <h2 className="font-semibold text-2xl mb-4">{title}</h2>
+          <Content className="my-10 mx-6 min-h-[280px] bg-bgWhite rounded-xl overflow-auto">
+            <div className="flex justify-between sticky top-0 bg-white p-6 z-10 shadow-sm items-center">
+              <h2 className="font-semibold text-2xl">{title}</h2>
+              <h2 className="text-xl">dd</h2>
+            </div>
             {!children && (
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-6 p-6">
                 {description && (
                   <p className="text-md text-start">{description}</p>
                 )}
@@ -145,7 +149,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                 )}
               </div>
             )}
-            {children}
+            <div className="p-6">{children}</div>
           </Content>
           <div className="text-textCommon text-center pb-5">7Easy</div>
         </Layout>
