@@ -18,3 +18,14 @@ baseApiInstance.interceptors.request.use(
   },
   (error) => Promise.reject(error),
 );
+
+baseApiInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      location.replace(`/en/auth`);
+      Cookies.remove("access_token");
+    }
+    return Promise.reject(error);
+  },
+);

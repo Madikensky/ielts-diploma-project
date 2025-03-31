@@ -9,6 +9,7 @@ interface PassageItemProps {
   passageText: string;
   passageQuestions: Question[];
   control: Control;
+  isScoreAvailable: boolean;
 }
 
 export const PassageItem: FC<PassageItemProps> = ({
@@ -16,6 +17,7 @@ export const PassageItem: FC<PassageItemProps> = ({
   passageText,
   passageQuestions,
   control,
+  isScoreAvailable,
 }) => {
   const { errors } = useFormState({ control });
 
@@ -50,10 +52,23 @@ export const PassageItem: FC<PassageItemProps> = ({
                             checked={field.value === ans}
                             onChange={() => field.onChange(ans)}
                             className="h-4 w-4"
+                            disabled={isScoreAvailable}
                           />
                           <label
                             htmlFor={`option-${ans}-${question.question_id}`}
-                            className="font-normal"
+                            className={`font-normal ${
+                              isScoreAvailable
+                                ? `${
+                                    ans == question.correct_answer
+                                      ? "text-green-500"
+                                      : `${
+                                          ans == field.value &&
+                                          ans != question.correct_answer &&
+                                          "text-red-500"
+                                        }`
+                                  } `
+                                : ``
+                            }`}
                           >
                             {ans}
                           </label>
@@ -85,7 +100,16 @@ export const PassageItem: FC<PassageItemProps> = ({
                       <Input
                         placeholder="Enter your answer here"
                         {...field}
-                        className="w-fit rounded"
+                        disabled={isScoreAvailable}
+                        className={`w-fit rounded ${
+                          isScoreAvailable
+                            ? `${
+                                field.value == question.correct_answer
+                                  ? "text-green-500"
+                                  : "text-red-500"
+                              }`
+                            : ``
+                        }`}
                       />
                       {errors[`question_${question.question_id}`] && (
                         <p className="text-red-500 text-sm">

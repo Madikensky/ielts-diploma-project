@@ -18,6 +18,10 @@ export interface Question {
   question_id: number;
 }
 
+export interface ResponseReadingI {
+  score: number;
+}
+
 export interface SubmitReadingI {
   test_type: "reading";
   test_id: number;

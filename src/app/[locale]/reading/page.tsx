@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-// import { Reading } from "@/features/reading/model/passage";
 import {
   getReadingTest,
   submitReadingTest,
@@ -9,6 +8,7 @@ import {
 import {
   Answer,
   ReadingTest,
+  ResponseReadingI,
   SubmitReadingI,
 } from "@/features/reading/model/passage";
 import { PassageItem } from "@/features/reading/ui/PassageItem";
@@ -18,18 +18,13 @@ import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { AxiosError } from "axios";
 
-interface ReadingProps {
-  subtitle?: string;
-  setSubtitle?: (value: string) => void;
-}
-
-const Reading: FC<ReadingProps> = ({ subtitle, setSubtitle }) => {
+const Reading: FC = () => {
   const { mutate, data } = useMutation<ReadingTest>({
     mutationFn: getReadingTest,
   });
 
-  const { mutate: submitReading, data: data3 } = useMutation<
-    unknown, // response type
+  const { mutate: submitReading, data: score } = useMutation<
+    ResponseReadingI, // response type
     AxiosError,
     SubmitReadingI
   >({
@@ -47,7 +42,6 @@ const Reading: FC<ReadingProps> = ({ subtitle, setSubtitle }) => {
         answer: v,
       };
     });
-    console.log(transformed);
     submitReading({
       test_id: 1,
       test_type: "reading",
@@ -59,6 +53,7 @@ const Reading: FC<ReadingProps> = ({ subtitle, setSubtitle }) => {
     <MainLayout
       description="In this section, you'll practice the IELTS Reading test by working through real exam-style passages and answering comprehension questions within a set time. After completing the test, you'll receive instant feedback with explanations for correct answers, helping you improve your reading skills, time management, and accuracy."
       title="Reading"
+      score={score?.score}
       onClick={() => {
         mutate();
       }}
@@ -72,22 +67,25 @@ const Reading: FC<ReadingProps> = ({ subtitle, setSubtitle }) => {
                 passageTitle={data.test[0].title}
                 passageQuestions={data.test[0].questions}
                 passageText={data.test[0].text}
+                isScoreAvailable={!!score}
               />
               <PassageItem
                 control={control}
                 passageTitle={data.test[1].title}
                 passageQuestions={data.test[1].questions}
                 passageText={data.test[1].text}
+                isScoreAvailable={!!score}
               />
               <PassageItem
                 control={control}
                 passageTitle={data.test[2].title}
                 passageQuestions={data.test[2].questions}
                 passageText={data.test[2].text}
+                isScoreAvailable={!!score}
               />
             </div>
             <div className="mt-5 mb-8 text-end">
-              <Button type="submit" variant={"primary"}>
+              <Button type="submit" variant={"primary"} disabled={!!score}>
                 Submit Test
               </Button>
             </div>

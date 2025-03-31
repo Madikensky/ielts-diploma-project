@@ -27,12 +27,14 @@ interface MainLayoutProps {
   title: string;
   description?: string;
   onClick?: () => void;
+  score?: number;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({
   children,
   title,
   description,
+  score,
   onClick,
 }) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -129,9 +131,16 @@ const MainLayout: React.FC<MainLayoutProps> = ({
             />
           </Header>
           <Content className="my-10 mx-6 min-h-[280px] bg-bgWhite rounded-xl overflow-auto">
-            <div className="flex justify-between sticky top-0 bg-white p-6 z-10 shadow-sm items-center">
+            <div className="flex justify-between font-semibold sticky top-0 bg-white p-6 z-10 shadow-sm items-center">
               <h2 className="font-semibold text-2xl">{title}</h2>
-              <h2 className="text-xl">dd</h2>
+              <div className="flex flex-col items-center justify-center">
+                {/* <h2 className="text-xl">You've got {score || ""} / 40</h2> */}
+                {score ? (
+                  <h2 className="text-xl text-textCommon">
+                    Your score is <span className="">{score}</span> / 9.0
+                  </h2>
+                ) : null}
+              </div>
             </div>
             {!children && (
               <div className="flex flex-col gap-6 p-6">
