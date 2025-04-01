@@ -23,8 +23,8 @@ baseApiInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      location.replace(`/en/auth`);
       Cookies.remove("access_token");
+      location.replace(`/en/auth`);
     }
     return Promise.reject(error);
   },

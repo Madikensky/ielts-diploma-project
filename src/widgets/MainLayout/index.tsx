@@ -1,24 +1,24 @@
 "use client";
 
-import { Button as PrimaryButton } from "@/components/ui/button";
 import { usePathname } from "@/i18n/routing";
 import { themeConfig } from "@/shared/theme/themeConfig";
 import {
   AudioOutlined,
+  CustomerServiceOutlined,
   EditOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   ReadOutlined,
-  CustomerServiceOutlined,
   UserDeleteOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import "@ant-design/v5-patch-for-react-19";
 import { Button, ConfigProvider, Layout, Menu } from "antd";
+import Cookies from "js-cookie";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import React, { ReactNode, useState } from "react";
-import Cookies from "js-cookie";
+import { Button as PrimaryButton } from "@/components/ui/button";
 
 const { Header, Sider, Content } = Layout;
 
@@ -26,8 +26,8 @@ interface MainLayoutProps {
   children: ReactNode;
   title: string;
   description?: string;
-  onClick?: () => void;
   score?: number;
+  onClick?: () => void;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({
@@ -38,7 +38,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   onClick,
 }) => {
   const [collapsed, setCollapsed] = useState(false);
-  const [timer, setTimer] = useState("3600 ");
   const router = useRouter();
   const locale = useLocale();
   const pathname = usePathname();
@@ -142,12 +141,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                 ) : null}
               </div>
             </div>
-            {!children && (
+            {
               <div className="flex flex-col gap-6 p-6">
                 {description && (
                   <p className="text-md text-start">{description}</p>
                 )}
-                {onClick && (
+                {onClick && !children && (
                   <PrimaryButton
                     onClick={onClick}
                     variant={"primary"}
@@ -157,7 +156,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   </PrimaryButton>
                 )}
               </div>
-            )}
+            }
             <div className="p-6">{children}</div>
           </Content>
           <div className="text-textCommon text-center pb-5">7Easy</div>

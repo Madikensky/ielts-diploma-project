@@ -18,17 +18,24 @@ export interface Question {
   question_id: number;
 }
 
+export interface Answer {
+  question_id: number;
+  answer: string;
+}
+
 export interface ResponseReadingI {
   score: number;
 }
 
-export interface SubmitReadingI {
+export interface RequestReadingI {
   test_type: "reading";
   test_id: number;
   answers: Answer[];
 }
 
-export interface Answer {
-  question_id: number;
-  answer: string;
+export interface ReadingTestResult {
+  passed: boolean;
+  passed_time: string;
+  reading_id: number;
+  score: number;
 }

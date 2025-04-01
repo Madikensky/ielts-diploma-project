@@ -111,6 +111,15 @@ export const PassageItem: FC<PassageItemProps> = ({
                             : ``
                         }`}
                       />
+                      {isScoreAvailable &&
+                        field.value != question.correct_answer && (
+                          <div>
+                            Correct answer:{" "}
+                            <span className="text-green-500">
+                              {question.correct_answer}
+                            </span>
+                          </div>
+                        )}
                       {errors[`question_${question.question_id}`] && (
                         <p className="text-red-500 text-sm">
                           {
