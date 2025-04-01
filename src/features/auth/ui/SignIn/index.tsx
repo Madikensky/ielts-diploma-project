@@ -15,8 +15,25 @@ import {
 import { Input } from "@/components/ui/input";
 import { formSchema, SignInFormValues, SignInProps } from "../../model/SignIn";
 import { FC } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { signIn } from "../../api/signIn";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 
 export const SignIn: FC<SignInProps> = ({ onSwitch }) => {
+  const router = useRouter();
+  const locale = useLocale();
+  const mutation = useMutation({
+    mutationFn: signIn,
+    onSuccess: (e: { token: string }) => {
+      Cookies.set("access_token", e.token);
+      router.push(`/${locale}/home`);
+    },
+    onError: (e) => {
+      console.log(e);
+    },
+  });
   const form = useForm<SignInFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -27,6 +44,7 @@ export const SignIn: FC<SignInProps> = ({ onSwitch }) => {
 
   const onSubmit = (data: SignInFormValues) => {
     console.log(data);
+    mutation.mutate(data);
   };
 
   return (

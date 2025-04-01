@@ -1,37 +1,41 @@
-import { Control } from "react-hook-form";
-
-export interface TestInfo {
-  cardinality: string;
-  field: string;
-  owner: string;
-}
-
-export interface Question {
-  id: string;
-  status: string;
-  test: TestInfo;
-  question: string;
-  test_id: string;
-  inserted_at: string;
-  updated_at: string;
-  answers: string[];
-  correct_answer: string;
+export interface ReadingTest {
+  question_count: number;
+  reading_id: number;
+  test: Part[];
 }
 
 export interface Part {
   text: string;
   questions: Question[];
+  title: string;
 }
 
-export interface TestDataI {
-  part1: Part;
-  part2: Part;
-  part3: Part;
+export interface Question {
+  answers: string[];
+  correct_answer: string;
+  part: number;
+  question: string;
+  question_id: number;
 }
 
-export interface PassageItemProps {
-  passageNumber: number;
-  passageText: string;
-  passageQuestions: Question[];
-  control: Control;
+export interface Answer {
+  question_id: number;
+  answer: string;
+}
+
+export interface ResponseReadingI {
+  score: number;
+}
+
+export interface RequestReadingI {
+  test_type: "reading";
+  test_id: number;
+  answers: Answer[];
+}
+
+export interface ReadingTestResult {
+  passed: boolean;
+  passed_time: string;
+  reading_id: number;
+  score: number;
 }

@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { usePathname } from "@/i18n/routing";
 import { cn } from "@/shared/lib/utils";
 import { Menu, X } from "lucide-react";
+import { useLocale } from "next-intl";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 
@@ -15,6 +17,8 @@ export const Header = () => {
   const isAuth = pathname === "/auth";
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("home");
+  const locale = useLocale();
+  const router = useRouter();
 
   const scrollToSection = (id: HeaderLinks) => {
     const element = document.getElementById(id);
@@ -60,7 +64,12 @@ export const Header = () => {
           isAuth ? "p-6" : "p-4",
         )}
       >
-        <h1 className="text-textCommon font-bold text-2xl">7Easy</h1>
+        <Link
+          className="text-textCommon font-bold text-2xl"
+          href={`/${locale}/`}
+        >
+          7Easy
+        </Link>
 
         {!isAuth && (
           <>
@@ -158,6 +167,7 @@ export const Header = () => {
                 variant={"landingBtn"}
                 size={"lg"}
                 className="bg-bgCommon cursor-pointer"
+                onClick={() => router.push(`/${locale}/auth`)}
               >
                 Start Practicing
               </Button>

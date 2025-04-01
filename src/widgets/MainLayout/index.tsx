@@ -1,30 +1,32 @@
 "use client";
 
-import { Button as PrimaryButton } from "@/components/ui/button";
 import { usePathname } from "@/i18n/routing";
 import { themeConfig } from "@/shared/theme/themeConfig";
 import {
   AudioOutlined,
+  CustomerServiceOutlined,
   EditOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   ReadOutlined,
-  CustomerServiceOutlined,
   UserDeleteOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import "@ant-design/v5-patch-for-react-19";
 import { Button, ConfigProvider, Layout, Menu } from "antd";
+import Cookies from "js-cookie";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import React, { ReactNode, useState } from "react";
+import { Button as PrimaryButton } from "@/components/ui/button";
 
 const { Header, Sider, Content } = Layout;
 
 interface MainLayoutProps {
-  children?: ReactNode;
+  children: ReactNode;
   title: string;
   description?: string;
+  score?: number;
   onClick?: () => void;
 }
 
@@ -32,6 +34,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   children,
   title,
   description,
+  score,
   onClick,
 }) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -105,7 +108,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   label: "Log out",
                   danger: true,
                   onClick: () => {
-                    console.log("log out");
+                    Cookies.remove("access_token");
+                    router.push(`/${locale}/auth`);
                   },
                 },
               ]}
@@ -125,14 +129,24 @@ const MainLayout: React.FC<MainLayoutProps> = ({
               }}
             />
           </Header>
-          <Content className="my-10 mx-6 p-6 min-h-[280px] bg-bgWhite rounded-xl overflow-auto">
-            <h2 className="font-semibold text-2xl mb-4">{title}</h2>
-            {!children && (
-              <div className="flex flex-col gap-6">
+          <Content className="my-10 mx-6 min-h-[280px] bg-bgWhite rounded-xl overflow-auto">
+            <div className="flex justify-between font-semibold sticky top-0 bg-white p-6 z-10 shadow-sm items-center">
+              <h2 className="font-semibold text-2xl">{title}</h2>
+              <div className="flex flex-col items-center justify-center">
+                {/* <h2 className="text-xl">You've got {score || ""} / 40</h2> */}
+                {score ? (
+                  <h2 className="text-xl text-textCommon">
+                    Your score is <span className="">{score}</span> / 9.0
+                  </h2>
+                ) : null}
+              </div>
+            </div>
+            {
+              <div className="flex flex-col gap-6 p-6">
                 {description && (
                   <p className="text-md text-start">{description}</p>
                 )}
-                {onClick && (
+                {onClick && !children && (
                   <PrimaryButton
                     onClick={onClick}
                     variant={"primary"}
@@ -142,8 +156,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   </PrimaryButton>
                 )}
               </div>
-            )}
-            {children}
+            }
+            <div className="p-6">{children}</div>
           </Content>
           <div className="text-textCommon text-center pb-5">7Easy</div>
         </Layout>

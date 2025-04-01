@@ -15,8 +15,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { formSchema, SignUpFormValues, SignUpProps } from "../../model/SignUp";
 import { FC } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { signUp } from "../../api/signUp";
 
 export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
+  const mutation = useMutation({
+    mutationFn: signUp,
+    onSuccess: () => {
+      window.location.reload();
+    },
+    onError: (e) => {
+      console.log(e);
+    },
+  });
   const form = useForm<SignUpFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -28,6 +39,7 @@ export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
 
   const onSubmit = (data: SignUpFormValues) => {
     console.log(data);
+    mutation.mutate(data);
   };
 
   return (
