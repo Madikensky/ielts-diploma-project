@@ -2,43 +2,51 @@ import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 
-function authMiddleware(request: NextRequest) {
-  const access_token = request.cookies.get("access_token");
-  const pathname = request.nextUrl.pathname.slice(3);
-  const available_routes = [
-    "/auth",
-    "/reading",
-    "/listening",
-    "/",
-    "/writing",
-    "/home",
-    "/speaking",
-    "/profile",
-  ];
-
-  if (!available_routes.includes(pathname)) {
-    console.log(pathname);
-    return NextResponse.redirect(new URL("en/home", request.url));
-  }
-
-  if (!access_token && pathname !== "/auth" && pathname !== "") {
-    return NextResponse.redirect(new URL(`${"en"}/auth`, request.url));
-  }
-
-  if ((pathname === "/auth" || pathname == "") && access_token) {
-    return NextResponse.redirect(new URL(`${"en"}/home`, request.url));
-  }
-
-  return NextResponse.next();
-}
-
 const i18nMiddleware = createMiddleware(routing);
 
-export function middleware(request: NextRequest) {
-  const authResponse = authMiddleware(request);
-  if (authResponse) return authResponse;
+export async function middleware(request: NextRequest) {
+  const response = i18nMiddleware(request);
+  if (response) {
+    return await authMiddleware(request, response);
+  }
+  return response;
+}
 
-  return i18nMiddleware(request);
+export async function authMiddleware(
+  request: NextRequest,
+  response: NextResponse,
+) {
+  const access_token = request.cookies.get("access_token");
+  const { pathname } = request.nextUrl;
+
+  const locale = pathname.startsWith("/ru") ? "ru" : "en";
+  const path = pathname.replace(/^\/(ru|en)/, "") || "/";
+
+  const publicPaths = ["/auth", "/"];
+  const allPaths = [
+    "/auth",
+    "/home",
+    "/profile",
+    "/reading",
+    "/listening",
+    "/writing",
+    "/speaking",
+  ];
+  const isPublic = publicPaths.includes(path);
+
+  if (!access_token && !isPublic) {
+    return NextResponse.redirect(new URL(`/${locale}/auth`, request.url));
+  }
+
+  if (access_token && path == "/auth") {
+    return NextResponse.redirect(new URL(`/${locale}/home`, request.url));
+  }
+
+  if (access_token && !allPaths.includes(path)) {
+    return NextResponse.redirect(new URL(`/${locale}/home`, request.url));
+  }
+
+  return response;
 }
 
 export const config = {
