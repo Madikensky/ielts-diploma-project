@@ -4,7 +4,6 @@ import { routing } from "./i18n/routing";
 
 function authMiddleware(request: NextRequest) {
   const access_token = request.cookies.get("access_token");
-  const locale = request.nextUrl.pathname.slice(0, 3);
   const pathname = request.nextUrl.pathname.slice(3);
   const available_routes = [
     "/auth",
