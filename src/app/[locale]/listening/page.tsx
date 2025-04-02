@@ -1,50 +1,71 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { PassageItem } from "@/features/reading/ui/PassageItem";
+import { PartItem } from "@/shared/ui/PartItem";
 import MainLayout from "@/widgets/MainLayout";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AxiosError } from "axios";
 import {
+  ListeningTest,
   ListeningTestResults,
+  RequestListeningI,
   ResponseListeningI,
 } from "@/features/listening/model";
 import {
   getAllListeningTests,
   getListeningTestById,
+  submitListeningTest as submitListening,
 } from "@/features/listening/api/listening";
 import { TestWidget } from "@/widgets/TestWidget";
 
 const Listening: FC = () => {
+  const [testId, setTestId] = useState<number | null>(null);
+
   const { data: allTests } = useQuery<ListeningTestResults[], AxiosError>({
     queryKey: ["all_listening_tests"],
     queryFn: getAllListeningTests,
   });
 
   const { mutate: getListeningTest, data } = useMutation<
-    ResponseListeningI,
+    ListeningTest,
     AxiosError,
     number
   >({
-    mutationFn: (id: number) => getListeningTestById(id),
+    mutationFn: (id: number) => {
+      setTestId(id);
+      return getListeningTestById(id);
+    },
   });
 
-  // const { mutate: submitReading, data: data3 } = useMutation<
-  //   unknown, // response type
-  //   AxiosError,
-  //   SubmitReadingI
-  // >({
-  //   mutationFn: submitReadingTest,
-  // });
+  const { mutate: submitListeningTest, data: score } = useMutation<
+    ResponseListeningI, // response type
+    AxiosError,
+    RequestListeningI
+  >({
+    mutationFn: submitListening,
+  });
 
   const { control, handleSubmit } = useForm<{
     [key: string]: string;
   }>();
 
   const onSubmit = (data: { [key: string]: string }) => {
-    console.log(data);
+    const transformedData = Object.entries(data).map(([k, v]) => {
+      return {
+        question_id: +k.replace("question_", ""),
+        answer: v,
+      };
+    });
+
+    if (testId) {
+      submitListeningTest({
+        test_id: testId,
+        test_type: "listening",
+        answers: transformedData,
+      });
+    }
   };
 
   const availableTests = (allTests ?? []).filter((test) => !test.passed);
@@ -56,12 +77,56 @@ const Listening: FC = () => {
         After completing the test, you'll receive instant feedback with correct answers and explanations, helping you improve your listening accuracy, note-taking skills, and ability to understand different accents."
       title="Listening"
     >
-      <TestWidget
-        availableTests={availableTests}
-        completedTests={completedTests}
-        isReading={false}
-        onClick={(id) => getListeningTest(id)}
-      />
+      {data ? (
+        <div className="flex flex-col h-full">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="flex flex-col gap-5">
+              <PartItem
+                control={control}
+                passageTitle={data.test[0].title}
+                passageQuestions={data.test[0].questions}
+                isScoreAvailable={!!score}
+                passageAudio={"https://ielts-up.com/listening/5.1.mp3"}
+              />
+              <PartItem
+                control={control}
+                passageTitle={data.test[1].title}
+                passageQuestions={data.test[1].questions}
+                isScoreAvailable={!!score}
+                passageAudio={
+                  "https://codeskulptor-demos.commondatastorage.googleapis.com/descent/Zombie.mp3"
+                }
+              />
+              <PartItem
+                control={control}
+                passageTitle={data.test[2].title}
+                passageQuestions={data.test[2].questions}
+                isScoreAvailable={!!score}
+              />
+            </div>
+            <div className="mt-5 mb-8 text-end flex flex-row gap-3 justify-end">
+              {!!score && (
+                <Button
+                  variant={"primary"}
+                  onClick={() => window.location.reload()}
+                >
+                  To Menu
+                </Button>
+              )}
+              <Button type="submit" variant={"primary"} disabled={!!score}>
+                Submit Test
+              </Button>
+            </div>
+          </form>
+        </div>
+      ) : (
+        <TestWidget
+          completedTests={completedTests}
+          availableTests={availableTests}
+          isReading={false}
+          onClick={(id) => getListeningTest(id)}
+        />
+      )}
     </MainLayout>
   );
 };

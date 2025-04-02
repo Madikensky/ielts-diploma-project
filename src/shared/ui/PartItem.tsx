@@ -1,22 +1,25 @@
 import { FC } from "react";
 import { Control, Controller, useFormState } from "react-hook-form";
 import { RadioGroup } from "@/components/ui/radio-group";
-import { Question } from "../model/passage";
 import { Input } from "@/components/ui/input";
+import { Question } from "../types";
+import { AudioPlayer } from "@/features/listening/ui/AudioPlayer";
 
-interface PassageItemProps {
+interface PartItemProps {
   passageTitle: string;
-  passageText: string;
+  passageText?: string;
+  passageAudio?: string;
   passageQuestions: Question[];
   control: Control;
   isScoreAvailable: boolean;
 }
 
-export const PassageItem: FC<PassageItemProps> = ({
+export const PartItem: FC<PartItemProps> = ({
   passageTitle,
   passageText,
   passageQuestions,
   control,
+  passageAudio,
   isScoreAvailable,
 }) => {
   const { errors } = useFormState({ control });
@@ -24,7 +27,12 @@ export const PassageItem: FC<PassageItemProps> = ({
   return (
     <>
       <h2 className="font-semibold text-lg mb mt-2">{`${passageTitle}`}</h2>
-      <div>{passageText}</div>
+      {passageText && (
+        <div>
+          <div>{passageText}</div>
+        </div>
+      )}
+      {passageAudio && <AudioPlayer part={passageTitle} src={passageAudio} />}
       {passageQuestions.map((question, index) => {
         return (
           <div className="mt-2 flex flex-col gap-2" key={question.question_id}>

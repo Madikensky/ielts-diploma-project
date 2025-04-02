@@ -2,14 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
   getAllReadingTests,
   getReadingTestById,
   submitReadingTest,
@@ -20,12 +12,11 @@ import {
   RequestReadingI,
   ResponseReadingI,
 } from "@/features/reading/model/passage";
-import { PassageItem } from "@/features/reading/ui/PassageItem";
+import { PartItem } from "@/shared/ui/PartItem";
 import MainLayout from "@/widgets/MainLayout";
 import { TestWidget } from "@/widgets/TestWidget";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { ArrowRight, BookOpen, CheckCircle } from "lucide-react";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -90,21 +81,21 @@ const Reading: FC = () => {
         <div className="flex flex-col h-full">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-5">
-              <PassageItem
+              <PartItem
                 control={control}
                 passageTitle={data.test[0].title}
                 passageQuestions={data.test[0].questions}
                 passageText={data.test[0].text}
                 isScoreAvailable={!!score}
               />
-              <PassageItem
+              <PartItem
                 control={control}
                 passageTitle={data.test[1].title}
                 passageQuestions={data.test[1].questions}
                 passageText={data.test[1].text}
                 isScoreAvailable={!!score}
               />
-              <PassageItem
+              <PartItem
                 control={control}
                 passageTitle={data.test[2].title}
                 passageQuestions={data.test[2].questions}

@@ -1,4 +1,5 @@
 import { baseApiInstance } from "@/shared/api";
+import { RequestListeningI } from "../model";
 
 export const getListeningTestById = async (id: number) => {
   const res = await baseApiInstance.get(
@@ -12,7 +13,7 @@ export const getAllListeningTests = async () => {
   return res.data;
 };
 
-// export const submitReadingTest = async (data: SubmitReadingI) => {
-//   const res = await baseApiInstance.post("api/test/save", data);
-//   return res.data;
-// };
+export const submitListeningTest = async (data: RequestListeningI) => {
+  const res = await baseApiInstance.post("api/test/save", data);
+  return res.data;
+};
