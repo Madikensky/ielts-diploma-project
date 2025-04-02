@@ -94,9 +94,11 @@ export const TestWidget: FC<TestWidgetProps> = ({
                     <Button
                       className="w-full bg-[#d15c65] hover:bg-[#b84c55] text-md p-2 rounded-[10px]"
                       onClick={() =>
-                        isReading
-                          ? onClick(test.reading_id!!)
-                          : onClick(test.listening_id!!)
+                        onClick(
+                          isReading
+                            ? test.reading_id ?? 1
+                            : test.listening_id ?? 1,
+                        )
                       }
                     >
                       {isCompleted ? "Retake" : "Start"}
@@ -158,9 +160,11 @@ export const TestWidget: FC<TestWidgetProps> = ({
                     <Button
                       className="w-full bg-[#d15c65] hover:bg-[#b84c55] text-md p-2 rounded-[10px]"
                       onClick={() =>
-                        isReading
-                          ? onClick(test.reading_id!!)
-                          : onClick(test.listening_id!!)
+                        onClick(
+                          isReading
+                            ? test.reading_id ?? 1
+                            : test.listening_id ?? 1,
+                        )
                       }
                     >
                       {isCompleted ? "Retake" : "Start"}
