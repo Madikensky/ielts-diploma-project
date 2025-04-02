@@ -7,7 +7,10 @@ export const getListeningTestById = async (id: number) => {
   return res.data;
 };
 
-// export const getAllListeningTests = async
+export const getAllListeningTests = async () => {
+  const res = await baseApiInstance.get("api/tests?type=listening");
+  return res.data;
+};
 
 // export const submitReadingTest = async (data: SubmitReadingI) => {
 //   const res = await baseApiInstance.post("api/test/save", data);

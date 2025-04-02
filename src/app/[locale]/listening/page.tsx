@@ -1,77 +1,69 @@
-// "use client";
+"use client";
 
-// import { Button } from "@/components/ui/button";
-// import {
-//   getReadingTest,
-//   submitReadingTest,
-// } from "@/features/reading/api/reading";
-// import { ReadingTest, SubmitReadingI } from "@/features/reading/model/passage";
-// import { PassageItem } from "@/features/reading/ui/PassageItem";
-// import MainLayout from "@/widgets/MainLayout";
-// import { useMutation } from "@tanstack/react-query";
-// import { FC } from "react";
-// import { useForm } from "react-hook-form";
-// import { AxiosError } from "axios";
-// import { getListeningTest } from "@/features/listening/api/listening";
-// import { ListeningResponseI } from "@/features/listening/model";
+import { Button } from "@/components/ui/button";
+import { PassageItem } from "@/features/reading/ui/PassageItem";
+import MainLayout from "@/widgets/MainLayout";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { FC } from "react";
+import { useForm } from "react-hook-form";
+import { AxiosError } from "axios";
+import {
+  ListeningTestResults,
+  ResponseListeningI,
+} from "@/features/listening/model";
+import {
+  getAllListeningTests,
+  getListeningTestById,
+} from "@/features/listening/api/listening";
+import { TestWidget } from "@/widgets/TestWidget";
 
-// const Listening: FC = () => {
-//   const { mutate, data } = useMutation<ListeningResponseI>({
-//     mutationFn: getListeningTest,
-//   });
+const Listening: FC = () => {
+  const { data: allTests } = useQuery<ListeningTestResults[], AxiosError>({
+    queryKey: ["all_listening_tests"],
+    queryFn: getAllListeningTests,
+  });
 
-//   // const { mutate: submitReading, data: data3 } = useMutation<
-//   //   unknown, // response type
-//   //   AxiosError,
-//   //   SubmitReadingI
-//   // >({
-//   //   mutationFn: submitReadingTest,
-//   // });
+  const { mutate: getListeningTest, data } = useMutation<
+    ResponseListeningI,
+    AxiosError,
+    number
+  >({
+    mutationFn: (id: number) => getListeningTestById(id),
+  });
 
-//   const { control, handleSubmit } = useForm<{
-//     [key: string]: string;
-//   }>();
+  // const { mutate: submitReading, data: data3 } = useMutation<
+  //   unknown, // response type
+  //   AxiosError,
+  //   SubmitReadingI
+  // >({
+  //   mutationFn: submitReadingTest,
+  // });
 
-//   const onSubmit = (data: { [key: string]: string }) => {
-//     console.log(data);
-//   };
+  const { control, handleSubmit } = useForm<{
+    [key: string]: string;
+  }>();
 
-//   return (
-//     <MainLayout
-//       description="In this section, you'll practice the IELTS Listening test by listening to real exam-style recordings and answering 40 questions within a set time.
-//         After completing the test, you'll receive instant feedback with correct answers and explanations, helping you improve your listening accuracy, note-taking skills, and ability to understand different accents."
-//       title="Listening"
-//       onClick={() => {
-//         mutate();
-//       }}
-//     >
-//       {data ? (
-//         <div className="flex flex-col h-full">
-//           <form onSubmit={handleSubmit(onSubmit)}>
-//             <div className="flex flex-col gap-5">
-//               {/* <PassageItem
-//                 control={control}
-//                 passageTitle={data.test[0].title}
-//                 passageQuestions={data.test[0].questions}
-//                 passageText={data.test[0].text}
-//               /> */}
-//             </div>
-//             <div className="mt-5 mb-8 text-end">
-//               <Button type="submit" variant={"primary"}>
-//                 Submit Test
-//               </Button>
-//             </div>
-//           </form>
-//         </div>
-//       ) : null}
-//     </MainLayout>
-//   );
-// };
+  const onSubmit = (data: { [key: string]: string }) => {
+    console.log(data);
+  };
 
-// export default Listening;
+  const availableTests = (allTests ?? []).filter((test) => !test.passed);
+  const completedTests = (allTests ?? []).filter((test) => test.passed);
 
-const Listening = () => {
-  return <div></div>;
+  return (
+    <MainLayout
+      description="In this section, you'll practice the IELTS Listening test by listening to real exam-style recordings and answering 40 questions within a set time.
+        After completing the test, you'll receive instant feedback with correct answers and explanations, helping you improve your listening accuracy, note-taking skills, and ability to understand different accents."
+      title="Listening"
+    >
+      <TestWidget
+        availableTests={availableTests}
+        completedTests={completedTests}
+        isReading={false}
+        onClick={(id) => getListeningTest(id)}
+      />
+    </MainLayout>
+  );
 };
 
 export default Listening;

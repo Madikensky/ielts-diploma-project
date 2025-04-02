@@ -22,6 +22,7 @@ import {
 } from "@/features/reading/model/passage";
 import { PassageItem } from "@/features/reading/ui/PassageItem";
 import MainLayout from "@/widgets/MainLayout";
+import { TestWidget } from "@/widgets/TestWidget";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { ArrowRight, BookOpen, CheckCircle } from "lucide-react";
@@ -127,135 +128,12 @@ const Reading: FC = () => {
           </form>
         </div>
       ) : (
-        <Tabs defaultValue="available">
-          <TabsList className="grid w-full grid-cols-2 mb-8">
-            <TabsTrigger value="available">Available Tests</TabsTrigger>
-            <TabsTrigger value="completed">Completed Tests</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="available" className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {availableTests.length > 0 ? (
-                availableTests.map((test) => {
-                  const isCompleted = completedTests.some(
-                    (test) => test.reading_id === test.reading_id,
-                  );
-
-                  return (
-                    <Card
-                      key={test.reading_id}
-                      className="overflow-hidden border border-gray-200 hover:shadow-md transition-shadow aspect-square flex flex-col"
-                    >
-                      <CardHeader className="bg-[#d15c65] text-white p-3 space-y-1">
-                        <CardTitle className="flex items-center gap-2 text-base">
-                          <BookOpen className="h-4 w-4" />
-                          Test {test.reading_id}
-                        </CardTitle>
-                        <CardDescription className="text-gray-100 text-xs">
-                          {isCompleted ? "Completed" : "Not attempted"}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="p-3 flex-grow flex flex-col justify-between">
-                        {
-                          <div className="mb-2 text-xl flex items-center justify-center h-full">
-                            {isCompleted ? (
-                              <div className="flex items-center gap-1 text-green-600">
-                                <CheckCircle className="h-[20px] w-[20px]" />
-                                <span>
-                                  Score:{" "}
-                                  {
-                                    completedTests.find(
-                                      (completedT) =>
-                                        test.reading_id ===
-                                        completedT.reading_id,
-                                    )?.score
-                                  }{" "}
-                                  / 9.0
-                                </span>
-                              </div>
-                            ) : (
-                              <div className="flex items-center text-textCommon">
-                                Not completed
-                              </div>
-                            )}
-                          </div>
-                        }
-                        <Button
-                          className="w-full bg-[#d15c65] hover:bg-[#b84c55] text-md p-2 rounded-[10px]"
-                          onClick={() => {
-                            getReadingTest(test.reading_id);
-                          }}
-                        >
-                          {isCompleted ? "Retake" : "Start"}
-                          <ArrowRight className="ml-1 h-3 w-3" />
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  );
-                })
-              ) : (
-                <div className="w-full pl-1">No tests available...</div>
-              )}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="completed" className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-              {completedTests.length > 0 ? (
-                completedTests.map((test) => {
-                  const isCompleted = true;
-
-                  return (
-                    <Card
-                      key={test.reading_id}
-                      className="overflow-hidden border border-gray-200 hover:shadow-md transition-shadow aspect-square flex flex-col"
-                    >
-                      <CardHeader className="bg-[#d15c65] text-white p-3 space-y-1">
-                        <CardTitle className="flex items-center gap-2 text-base">
-                          <BookOpen className="h-4 w-4" />
-                          Test {test.reading_id}
-                        </CardTitle>
-                        <CardDescription className="text-gray-100 text-xs">
-                          {isCompleted ? "Completed" : "Not attempted"}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="p-3 flex-grow flex flex-col justify-between">
-                        {isCompleted && (
-                          <div className="mb-2 text-xl flex items-center justify-center h-full">
-                            <div className="flex items-center gap-1 text-green-600">
-                              <CheckCircle className="h-[20px] w-[20px]" />
-                              <span>
-                                Highest Score:{" "}
-                                {
-                                  completedTests.find(
-                                    (completedT) =>
-                                      test.reading_id === completedT.reading_id,
-                                  )?.score
-                                }{" "}
-                                / 9.0
-                              </span>
-                            </div>
-                          </div>
-                        )}
-                        <Button
-                          className="w-full bg-[#d15c65] hover:bg-[#b84c55] text-md p-2 rounded-[10px]"
-                          onClick={() => {
-                            getReadingTest(test.reading_id);
-                          }}
-                        >
-                          {isCompleted ? "Retake" : "Start"}
-                          <ArrowRight className="ml-1 h-3 w-3" />
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  );
-                })
-              ) : (
-                <div className="w-full pl-1">No tests completed...</div>
-              )}
-            </div>
-          </TabsContent>
-        </Tabs>
+        <TestWidget
+          completedTests={completedTests}
+          availableTests={availableTests}
+          isReading
+          onClick={(id) => getReadingTest(id)}
+        />
       )}
     </MainLayout>
   );
