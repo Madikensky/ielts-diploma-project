@@ -23,11 +23,11 @@ function authMiddleware(request: NextRequest) {
   }
 
   if (!access_token && pathname !== "/auth" && pathname !== "") {
-    return NextResponse.redirect(new URL(`${locale}/auth`, request.url));
+    return NextResponse.redirect(new URL(`${"en"}/auth`, request.url));
   }
 
   if ((pathname === "/auth" || pathname == "") && access_token) {
-    return NextResponse.redirect(new URL(`${locale}/home`, request.url));
+    return NextResponse.redirect(new URL(`${"en"}/home`, request.url));
   }
 
   return NextResponse.next();
