@@ -122,7 +122,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   icon: <UserOutlined />,
                   label: "Profile",
                   onClick: () => {
-                    if (pathname !== `/home`) {
+                    if (pathname !== `/profile`) {
                       setIsLoading(true);
                       router.push(`/${locale}/profile`);
                     }

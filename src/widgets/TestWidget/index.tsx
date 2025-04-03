@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FC } from "react";
+import { FC, useState } from "react";
 import {
   Card,
   CardContent,
@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { ArrowRight, BookOpen, CheckCircle, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Loader } from "@/shared/ui/Loader";
 
 interface TestResult {
   score: number | null;
@@ -31,6 +32,9 @@ export const TestWidget: FC<TestWidgetProps> = ({
   isReading,
   onClick,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  if (isLoading) return <Loader />;
   return (
     <Tabs defaultValue="available">
       <TabsList className="grid w-full grid-cols-2 mb-8">
@@ -93,13 +97,14 @@ export const TestWidget: FC<TestWidgetProps> = ({
                     }
                     <Button
                       className="w-full bg-[#d15c65] hover:bg-[#b84c55] text-md p-2 rounded-[10px]"
-                      onClick={() =>
+                      onClick={() => {
+                        setIsLoading(true);
                         onClick(
                           isReading
                             ? test.reading_id ?? 1
                             : test.listening_id ?? 1,
-                        )
-                      }
+                        );
+                      }}
                     >
                       {isCompleted ? "Retake" : "Start"}
                       <ArrowRight className="ml-1 h-3 w-3" />
@@ -159,13 +164,14 @@ export const TestWidget: FC<TestWidgetProps> = ({
                     )}
                     <Button
                       className="w-full bg-[#d15c65] hover:bg-[#b84c55] text-md p-2 rounded-[10px]"
-                      onClick={() =>
+                      onClick={() => {
+                        setIsLoading(true);
                         onClick(
                           isReading
                             ? test.reading_id ?? 1
                             : test.listening_id ?? 1,
-                        )
-                      }
+                        );
+                      }}
                     >
                       {isCompleted ? "Retake" : "Start"}
                       <ArrowRight className="ml-1 h-3 w-3" />
