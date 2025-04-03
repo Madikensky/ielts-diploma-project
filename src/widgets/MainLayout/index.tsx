@@ -1,7 +1,9 @@
 "use client";
 
+import { Button as PrimaryButton } from "@/components/ui/button";
 import { usePathname } from "@/i18n/routing";
 import { themeConfig } from "@/shared/theme/themeConfig";
+import { Loader } from "@/shared/ui/Loader";
 import {
   AudioOutlined,
   CustomerServiceOutlined,
@@ -17,9 +19,7 @@ import { Button, ConfigProvider, Layout, Menu } from "antd";
 import Cookies from "js-cookie";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
-import React, { ReactNode, useEffect, useState } from "react";
-import { Button as PrimaryButton } from "@/components/ui/button";
-import { Loader } from "@/shared/ui/Loader";
+import React, { ReactNode, useState } from "react";
 
 const { Header, Sider, Content } = Layout;
 

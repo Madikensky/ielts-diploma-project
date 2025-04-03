@@ -1,7 +1,7 @@
 "use client";
 
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -13,14 +13,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { formSchema, SignInFormValues, SignInProps } from "../../model/SignIn";
-import { FC } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { signIn } from "../../api/signIn";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
-import { Loader } from "@/shared/ui/Loader";
+import { useRouter } from "next/navigation";
+import { FC } from "react";
+import { signIn } from "../../api/signIn";
+import { formSchema, SignInFormValues, SignInProps } from "../../model/SignIn";
 
 export const SignIn: FC<SignInProps> = ({ onSwitch }) => {
   const router = useRouter();
