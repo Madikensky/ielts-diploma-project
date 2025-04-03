@@ -20,6 +20,7 @@ import { signIn } from "../../api/signIn";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
+import { Loader } from "@/shared/ui/Loader";
 
 export const SignIn: FC<SignInProps> = ({ onSwitch }) => {
   const router = useRouter();
@@ -31,9 +32,10 @@ export const SignIn: FC<SignInProps> = ({ onSwitch }) => {
       router.push(`/${locale}/home`);
     },
     onError: (e) => {
-      console.log(e);
+      alert(e.message);
     },
   });
+
   const form = useForm<SignInFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -43,7 +45,6 @@ export const SignIn: FC<SignInProps> = ({ onSwitch }) => {
   });
 
   const onSubmit = (data: SignInFormValues) => {
-    console.log(data);
     mutation.mutate(data);
   };
 
@@ -98,8 +99,12 @@ export const SignIn: FC<SignInProps> = ({ onSwitch }) => {
             }}
           />
 
-          <Button variant={"authBtn"} type="submit">
-            Sign in
+          <Button
+            variant={"authBtn"}
+            type="submit"
+            disabled={mutation.isPending}
+          >
+            {mutation.isPending ? "Signing in..." : "Sign in"}
           </Button>
 
           <div
