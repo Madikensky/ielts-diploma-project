@@ -26,6 +26,7 @@ export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
     },
     onError: (e) => {
       console.log(e);
+      alert(e.message);
     },
   });
   const form = useForm<SignUpFormValues>({
@@ -116,10 +117,13 @@ export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
             }}
           />
 
-          <Button variant={"authBtn"} type="submit">
-            Sign up
+          <Button
+            variant={"authBtn"}
+            type="submit"
+            disabled={mutation.isPending}
+          >
+            {mutation.isPending ? "Signing up..." : "Sign up"}
           </Button>
-
           <div
             className="text-center font-semibold text-textCommon cursor-pointer"
             onClick={onSwitch}

@@ -11,6 +11,7 @@ import {
   postWritingTestI,
   WritingFeedback,
 } from "@/features/writing/model";
+import { Loader } from "@/shared/ui/Loader";
 import MainLayout from "@/widgets/MainLayout";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
@@ -29,6 +30,8 @@ const Writing: FC = () => {
   });
   const [wordCount, setWordCount] = useState<number>(0);
   const [text, setText] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isAIAnswered, setIsAIAnswered] = useState(false);
 
   useEffect(() => {
     setWordCount(text.trim().length > 0 ? text.trim().split(/\s+/).length : 0);
@@ -41,9 +44,10 @@ const Writing: FC = () => {
       title="Writing"
       onClick={() => {
         mutate();
+        setIsLoading(true);
       }}
     >
-      {data && (
+      {data ? (
         <>
           <p>
             Your essay topis is: <span className="font-bold">{data.task}</span>
@@ -65,6 +69,7 @@ const Writing: FC = () => {
                   variant={"primary"}
                   disabled={wordCount <= 1}
                   onClick={() => {
+                    setIsAIAnswered(true);
                     submitWriting({
                       test_id: data?.test_id,
                       essay: text,
@@ -112,14 +117,23 @@ const Writing: FC = () => {
                   </p>
                 </div>
               ) : (
-                <div className="text-gray-500">
-                  AI&apos;s feedback will be here..
-                </div>
+                // <Loader />
+                <>
+                  {isAIAnswered ? (
+                    <Loader />
+                  ) : (
+                    <div className="text-gray-500">
+                      AI&apos;s feedback will be here..
+                    </div>
+                  )}
+                </>
               )}
             </div>
           </div>
         </>
-      )}
+      ) : isLoading ? (
+        <Loader />
+      ) : null}
     </MainLayout>
   );
 };

@@ -73,7 +73,7 @@ const Reading: FC = () => {
 
   return (
     <MainLayout
-      description="In this section, you'll practice the IELTS Reading test by working through real exam-style passages and answering comprehension questions within a set time. After completing the test, you'll receive instant feedback with explanations for correct answers, helping you improve your reading skills, time management, and accuracy."
+      description="In this section, you'll practice the IELTS Reading test by working through real exam-style passages and answering comprehension questions within a set time. You can track both completed and pending tests on this page. Completed tests can be retaken to work on mistakes, and if a test has already been completed, your highest score will be displayed."
       title="Reading"
       score={score?.score}
     >

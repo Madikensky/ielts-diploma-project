@@ -1,7 +1,9 @@
 "use client";
 
+import { Button as PrimaryButton } from "@/components/ui/button";
 import { usePathname } from "@/i18n/routing";
 import { themeConfig } from "@/shared/theme/themeConfig";
+import { Loader } from "@/shared/ui/Loader";
 import {
   AudioOutlined,
   CustomerServiceOutlined,
@@ -18,7 +20,6 @@ import Cookies from "js-cookie";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import React, { ReactNode, useState } from "react";
-import { Button as PrimaryButton } from "@/components/ui/button";
 
 const { Header, Sider, Content } = Layout;
 
@@ -38,6 +39,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   onClick,
 }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const locale = useLocale();
   const pathname = usePathname();
@@ -64,37 +66,67 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                 {
                   key: "0",
                   label: "Home",
-                  onClick: () => router.push(`/${locale}/home`),
+                  onClick: () => {
+                    if (pathname !== `/home`) {
+                      setIsLoading(true);
+                      router.push(`/${locale}/home`);
+                    }
+                  },
                 },
                 {
                   key: "1",
                   icon: <AudioOutlined />,
                   label: "Speaking",
-                  onClick: () => router.push(`/${locale}/speaking`),
+                  onClick: () => {
+                    if (pathname !== `/speaking`) {
+                      setIsLoading(true);
+                      router.push(`/${locale}/speaking`);
+                    }
+                  },
                 },
                 {
                   key: "2",
                   icon: <EditOutlined />,
                   label: "Writing",
-                  onClick: () => router.push(`/${locale}/writing`),
+                  onClick: () => {
+                    if (pathname !== `/writing`) {
+                      setIsLoading(true);
+                      router.push(`/${locale}/writing`);
+                    }
+                  },
                 },
                 {
                   key: "3",
                   icon: <ReadOutlined />,
                   label: "Reading",
-                  onClick: () => router.push(`/${locale}/reading/`),
+                  onClick: () => {
+                    if (pathname !== `/reading`) {
+                      setIsLoading(true);
+                      router.push(`/${locale}/reading/`);
+                    }
+                  },
                 },
                 {
                   key: "4",
                   icon: <CustomerServiceOutlined />,
                   label: "Listening",
-                  onClick: () => router.push(`/${locale}/listening`),
+                  onClick: () => {
+                    if (pathname !== `/listening`) {
+                      setIsLoading(true);
+                      router.push(`/${locale}/listening`);
+                    }
+                  },
                 },
                 {
                   key: "5",
                   icon: <UserOutlined />,
                   label: "Profile",
-                  onClick: () => router.push(`/${locale}/profile`),
+                  onClick: () => {
+                    if (pathname !== `/profile`) {
+                      setIsLoading(true);
+                      router.push(`/${locale}/profile`);
+                    }
+                  },
                 },
               ]}
             />
@@ -129,36 +161,40 @@ const MainLayout: React.FC<MainLayoutProps> = ({
               }}
             />
           </Header>
-          <Content className="my-10 mx-6 min-h-[280px] bg-bgWhite rounded-xl overflow-auto">
-            <div className="flex justify-between font-semibold sticky top-0 bg-white p-6 z-10 shadow-sm items-center">
-              <h2 className="font-semibold text-2xl">{title}</h2>
-              <div className="flex flex-col items-center justify-center">
-                {/* <h2 className="text-xl">You've got {score || ""} / 40</h2> */}
-                {score ? (
-                  <h2 className="text-xl text-textCommon">
-                    Your score is <span className="">{score}</span> / 9.0
-                  </h2>
-                ) : null}
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <Content className="my-10 mx-6 min-h-[280px] bg-bgWhite rounded-xl overflow-auto">
+              <div className="flex justify-between font-semibold sticky top-0 bg-white p-6 z-10 shadow-sm items-center">
+                <h2 className="font-semibold text-2xl">{title}</h2>
+                <div className="flex flex-col items-center justify-center">
+                  {/* <h2 className="text-xl">You've got {score || ""} / 40</h2> */}
+                  {score ? (
+                    <h2 className="text-xl text-textCommon">
+                      Your score is <span className="">{score}</span> / 9.0
+                    </h2>
+                  ) : null}
+                </div>
               </div>
-            </div>
-            {
-              <div className="flex flex-col gap-6 p-6">
-                {description && (
-                  <p className="text-md text-start">{description}</p>
-                )}
-                {onClick && !children && (
-                  <PrimaryButton
-                    onClick={onClick}
-                    variant={"primary"}
-                    className="w-[150px]"
-                  >
-                    {"Start"}
-                  </PrimaryButton>
-                )}
-              </div>
-            }
-            <div className="p-6">{children}</div>
-          </Content>
+              {!children && (
+                <div className="flex flex-col gap-6 p-6">
+                  {<p className="text-md text-start">{description}</p>}
+                  {onClick && (
+                    <PrimaryButton
+                      onClick={() => {
+                        onClick();
+                      }}
+                      variant={"primary"}
+                      className="w-[150px]"
+                    >
+                      {"Start"}
+                    </PrimaryButton>
+                  )}
+                </div>
+              )}
+              <div className="p-6  border-red-500 h-full">{children}</div>
+            </Content>
+          )}
           <div className="text-textCommon text-center pb-5">7Easy</div>
         </Layout>
       </Layout>
