@@ -86,22 +86,25 @@ const Listening: FC = () => {
                 passageTitle={data.test[0].title}
                 passageQuestions={data.test[0].questions}
                 isScoreAvailable={!!score}
-                passageAudio={"https://ielts-up.com/listening/5.1.mp3"}
+                // passageAudio={"https://ielts-up.com/listening/5.1.mp3"}
+                passageAudio={data.test[0].audio_url}
               />
               <PartItem
                 control={control}
                 passageTitle={data.test[1].title}
                 passageQuestions={data.test[1].questions}
                 isScoreAvailable={!!score}
-                passageAudio={
-                  "https://codeskulptor-demos.commondatastorage.googleapis.com/descent/Zombie.mp3"
-                }
+                passageAudio={data.test[1].audio_url}
+                // passageAudio={
+                //   "https://codeskulptor-demos.commondatastorage.googleapis.com/descent/Zombie.mp3"
+                // }
               />
               <PartItem
                 control={control}
                 passageTitle={data.test[2].title}
                 passageQuestions={data.test[2].questions}
                 isScoreAvailable={!!score}
+                passageAudio={data.test[2].audio_url}
               />
             </div>
             <div className="mt-5 mb-8 text-end flex flex-row gap-3 justify-end">
