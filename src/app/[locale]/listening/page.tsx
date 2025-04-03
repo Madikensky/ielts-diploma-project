@@ -73,8 +73,7 @@ const Listening: FC = () => {
 
   return (
     <MainLayout
-      description="In this section, you'll practice the IELTS Listening test by listening to real exam-style recordings and answering 40 questions within a set time.
-        After completing the test, you'll receive instant feedback with correct answers and explanations, helping you improve your listening accuracy, note-taking skills, and ability to understand different accents."
+      description="In this section, you'll practice the IELTS Listening test by listening to real exam-style recordings and answering questions within a set time. You can track both completed and pending tests on this page. Completed tests can be retaken to work on mistakes, and if a test has already been completed, your highest score will be displayed."
       title="Listening"
     >
       {data ? (
