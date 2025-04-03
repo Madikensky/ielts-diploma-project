@@ -17,7 +17,7 @@ import { Button, ConfigProvider, Layout, Menu } from "antd";
 import Cookies from "js-cookie";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { Button as PrimaryButton } from "@/components/ui/button";
 import { Loader } from "@/shared/ui/Loader";
 
@@ -67,8 +67,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   key: "0",
                   label: "Home",
                   onClick: () => {
-                    setIsLoading(true);
-                    router.push(`/${locale}/home`);
+                    if (pathname !== `/home`) {
+                      setIsLoading(true);
+                      router.push(`/${locale}/home`);
+                    }
                   },
                 },
                 {
@@ -76,8 +78,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   icon: <AudioOutlined />,
                   label: "Speaking",
                   onClick: () => {
-                    setIsLoading(true);
-                    router.push(`/${locale}/speaking`);
+                    if (pathname !== `/speaking`) {
+                      setIsLoading(true);
+                      router.push(`/${locale}/speaking`);
+                    }
                   },
                 },
                 {
@@ -85,8 +89,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   icon: <EditOutlined />,
                   label: "Writing",
                   onClick: () => {
-                    setIsLoading(true);
-                    router.push(`/${locale}/writing`);
+                    if (pathname !== `/writing`) {
+                      setIsLoading(true);
+                      router.push(`/${locale}/writing`);
+                    }
                   },
                 },
                 {
@@ -94,8 +100,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   icon: <ReadOutlined />,
                   label: "Reading",
                   onClick: () => {
-                    setIsLoading(true);
-                    router.push(`/${locale}/reading/`);
+                    if (pathname !== `/reading`) {
+                      setIsLoading(true);
+                      router.push(`/${locale}/reading/`);
+                    }
                   },
                 },
                 {
@@ -103,8 +111,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   icon: <CustomerServiceOutlined />,
                   label: "Listening",
                   onClick: () => {
-                    setIsLoading(true);
-                    router.push(`/${locale}/listening`);
+                    if (pathname !== `/listening`) {
+                      setIsLoading(true);
+                      router.push(`/${locale}/listening`);
+                    }
                   },
                 },
                 {
@@ -112,8 +122,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   icon: <UserOutlined />,
                   label: "Profile",
                   onClick: () => {
-                    setIsLoading(true);
-                    router.push(`/${locale}/profile`);
+                    if (pathname !== `/home`) {
+                      setIsLoading(true);
+                      router.push(`/${locale}/profile`);
+                    }
                   },
                 },
               ]}
@@ -164,12 +176,14 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   ) : null}
                 </div>
               </div>
-              {description && (
+              {!children && (
                 <div className="flex flex-col gap-6 p-6">
                   {<p className="text-md text-start">{description}</p>}
-                  {onClick && !children && (
+                  {onClick && (
                     <PrimaryButton
-                      onClick={onClick}
+                      onClick={() => {
+                        onClick();
+                      }}
                       variant={"primary"}
                       className="w-[150px]"
                     >
@@ -178,7 +192,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   )}
                 </div>
               )}
-              <div className="p-6">{children}</div>
+              <div className="p-6  border-red-500 h-full">{children}</div>
             </Content>
           )}
           <div className="text-textCommon text-center pb-5">7Easy</div>
