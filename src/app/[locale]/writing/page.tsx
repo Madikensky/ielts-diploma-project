@@ -46,6 +46,7 @@ const Writing: FC = () => {
         mutate();
         setIsLoading(true);
       }}
+      isStarted={!!data}
     >
       {data ? (
         <>

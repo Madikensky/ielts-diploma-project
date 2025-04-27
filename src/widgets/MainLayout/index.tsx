@@ -19,7 +19,7 @@ import { Button, ConfigProvider, Layout, Menu } from "antd";
 import Cookies from "js-cookie";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 const { Header, Sider, Content } = Layout;
 
@@ -29,6 +29,7 @@ interface MainLayoutProps {
   description?: string;
   score?: number;
   onClick?: () => void;
+  isStarted?: boolean;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({
@@ -36,10 +37,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   title,
   description,
   score,
+  isStarted,
   onClick,
 }) => {
   const [collapsed, setCollapsed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [seconds, setSeconds] = useState(0);
   const router = useRouter();
   const locale = useLocale();
   const pathname = usePathname();
@@ -51,6 +54,24 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     "/listening",
     "/profile",
   ];
+
+  useEffect(() => {
+    if (isStarted) {
+      const interval = setInterval(() => {
+        setSeconds((prev) => prev + 1)
+      }, 1000)
+      return () => clearInterval(interval)
+    }
+  }, [isStarted])
+
+  const formatTime = (numTime: number) => {
+    const hours = Math.floor(numTime / 3600);
+    const minutes = Math.floor((numTime % 3600) / 60);
+    const seconds = numTime % 60;
+
+    const pad = (num: number) => String(num).padStart(2, "0")
+    return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
+  }
 
   return (
     <ConfigProvider theme={themeConfig}>
@@ -166,7 +187,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({
           ) : (
             <Content className="my-10 mx-6 min-h-[280px] bg-bgWhite rounded-xl overflow-auto">
               <div className="flex justify-between font-semibold sticky top-0 bg-white p-6 z-10 shadow-sm items-center">
-                <h2 className="font-semibold text-2xl">{title}</h2>
+                <h2 className="font-semibold text-2xl w-full flex justify-between">
+                  <div>{title}</div>
+                  {isStarted && <div>Timer: {formatTime(seconds)}</div>}
+                </h2>
                 <div className="flex flex-col items-center justify-center">
                   {/* <h2 className="text-xl">You've got {score || ""} / 40</h2> */}
                   {score ? (

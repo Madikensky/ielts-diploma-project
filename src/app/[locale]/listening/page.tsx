@@ -75,6 +75,7 @@ const Listening: FC = () => {
     <MainLayout
       description="In this section, you'll practice the IELTS Listening test by listening to real exam-style recordings and answering questions within a set time. You can track both completed and pending tests on this page. Completed tests can be retaken to work on mistakes, and if a test has already been completed, your highest score will be displayed."
       title="Listening"
+      isStarted={!!data}
     >
       {data ? (
         <div className="flex flex-col h-full">
