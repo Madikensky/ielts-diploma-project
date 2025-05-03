@@ -8,10 +8,10 @@ export interface TestResult {
 export interface Profile {
   user_id: number;
   email: string;
-  avg_listening_score: number | null;
-  avg_reading_score: number | null;
-  avg_speaking_score: number | null;
-  avg_writing_score: number | null;
+  avg_listening_score: number ;
+  avg_reading_score: number;
+  avg_speaking_score: number;
+  avg_writing_score: number;
   current_score: number | null;
   results: TestResult[];
 }
