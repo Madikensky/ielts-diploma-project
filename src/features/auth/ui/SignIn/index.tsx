@@ -33,9 +33,9 @@ export const SignIn: FC<SignInProps> = ({ onSwitch }) => {
     },
     onError: (e) => {
       alert(e.message);
+      setIsLoading(false)
     },
     onSettled: () => {
-      setIsLoading(false)
     }
   });
   const [isLoading, setIsLoading] = useState(false);

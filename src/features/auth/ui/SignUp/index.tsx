@@ -27,10 +27,10 @@ export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
     },
     onError: (e) => {
       console.log(e);
+      setIsLoading(false)
       alert(e.message);
     },
     onSettled: () => {
-      setIsLoading(false)
     }
   });
   const form = useForm<SignUpFormValues>({
