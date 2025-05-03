@@ -14,9 +14,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { formSchema, SignUpFormValues, SignUpProps } from "../../model/SignUp";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { signUp } from "../../api/signUp";
+import { Loader } from "@/shared/ui/Loader";
 
 export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
   const mutation = useMutation({
@@ -28,6 +29,9 @@ export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
       console.log(e);
       alert(e.message);
     },
+    onSettled: () => {
+      setIsLoading(false)
+    }
   });
   const form = useForm<SignUpFormValues>({
     resolver: zodResolver(formSchema),
@@ -38,14 +42,18 @@ export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
     },
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const onSubmit = (data: SignUpFormValues) => {
-    console.log(data);
     mutation.mutate(data);
+    setIsLoading(true)
+
   };
 
   return (
     <div className="flex-1 flex items-center justify-center w-full p-4">
-      <Form {...form}>
+      {isLoading && (<Loader/>)}
+      {!isLoading && <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="border-2 p-4 border-borderCommon rounded-[10px] sm:w-6/12 lg:w-4/12 w-full flex flex-col gap-5"
@@ -131,7 +139,7 @@ export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
             Already have an account? Sign in
           </div>
         </form>
-      </Form>
+      </Form>}
     </div>
   );
 };
