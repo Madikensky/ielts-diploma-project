@@ -1,7 +1,7 @@
 "use client";
 
 import { Button as PrimaryButton } from "@/components/ui/button";
-import { DialogClose, DialogHeader } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { usePathname } from "@/i18n/routing";
 import { cn } from "@/shared/lib/utils";
 import { themeConfig } from "@/shared/theme/themeConfig";
@@ -17,7 +17,6 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import "@ant-design/v5-patch-for-react-19";
-import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button, ConfigProvider, Layout, Menu } from "antd";
 import Cookies from "js-cookie";
 import { useLocale } from "next-intl";
@@ -93,7 +92,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
       <Dialog open={isDataSubmitted} onOpenChange={setIsDataSubmitted}>
         <DialogContent className="text-textCommon  border-borderCommon rounded-lg">
           <DialogHeader>
-            <DialogTitle>Congratulations!🎉 You've finished your exam.</DialogTitle>
+            <DialogTitle>Congratulations!🎉 You&#39;ve finished your exam.</DialogTitle>
             <DialogDescription>
               {score && <span className="text-xl font-semibold text-black">Your score: {score} / 9.0</span>}
               <br/>
