@@ -19,9 +19,11 @@ import {
   submitListeningTest as submitListening,
 } from "@/features/listening/api/listening";
 import { TestWidget } from "@/widgets/TestWidget";
+import { Loader } from "@/shared/ui/Loader";
 
 const Listening: FC = () => {
   const [testId, setTestId] = useState<number | null>(null);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const { data: allTests } = useQuery<ListeningTestResults[], AxiosError>({
     queryKey: ["all_listening_tests"],
@@ -39,7 +41,7 @@ const Listening: FC = () => {
     },
   });
 
-  const { mutate: submitListeningTest, data: score } = useMutation<
+  const { mutate: submitListeningTest, isPending, data: score } = useMutation<
     ResponseListeningI, // response type
     AxiosError,
     RequestListeningI
@@ -65,6 +67,7 @@ const Listening: FC = () => {
         test_type: "listening",
         answers: transformedData,
       });
+      setIsSubmitted(true);
     }
   };
 
@@ -76,6 +79,8 @@ const Listening: FC = () => {
       description="In this section, you'll practice the IELTS Listening test by listening to real exam-style recordings and answering questions within a set time. You can track both completed and pending tests on this page. Completed tests can be retaken to work on mistakes, and if a test has already been completed, your highest score will be displayed."
       title="Listening"
       isStarted={!!data}
+      score={score?.score}
+      isSubmitted={isSubmitted}
     >
       {data ? (
         <div className="flex flex-col h-full">
@@ -122,6 +127,8 @@ const Listening: FC = () => {
             </div>
           </form>
         </div>
+      ) : isPending ? (
+        <Loader/>
       ) : (
         <TestWidget
           completedTests={completedTests}
