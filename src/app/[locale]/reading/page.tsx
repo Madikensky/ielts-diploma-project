@@ -12,6 +12,7 @@ import {
   RequestReadingI,
   ResponseReadingI,
 } from "@/features/reading/model/passage";
+import { Loader } from "@/shared/ui/Loader";
 import { PartItem } from "@/shared/ui/PartItem";
 import MainLayout from "@/widgets/MainLayout";
 import { TestWidget } from "@/widgets/TestWidget";
@@ -22,6 +23,7 @@ import { useForm } from "react-hook-form";
 
 const Reading: FC = () => {
   const [testId, setTestId] = useState<number | null>(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const { mutate: getReadingTest, data } = useMutation<
     ReadingTest,
@@ -34,7 +36,7 @@ const Reading: FC = () => {
     },
   });
 
-  const { mutate: submitReading, data: score } = useMutation<
+  const { mutate: submitReading, data: score, isPending } = useMutation<
     ResponseReadingI, // response type
     AxiosError,
     RequestReadingI
@@ -65,6 +67,8 @@ const Reading: FC = () => {
         test_type: "reading",
         answers: transformed,
       });
+
+      setIsSubmitted(true);
     }
   };
 
@@ -77,6 +81,7 @@ const Reading: FC = () => {
       title="Reading"
       score={score?.score}
       isStarted={!!data}
+      isSubmitted={isSubmitted}
     >
       {data ? (
         <div className="flex flex-col h-full">
@@ -119,6 +124,8 @@ const Reading: FC = () => {
             </div>
           </form>
         </div>
+      ) : isPending ? (
+        <Loader/>
       ) : (
         <TestWidget
           completedTests={completedTests}

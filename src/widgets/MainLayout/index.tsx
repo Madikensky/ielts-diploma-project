@@ -95,7 +95,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
           <DialogHeader>
             <DialogTitle>Congratulations!🎉 You've finished your exam.</DialogTitle>
             <DialogDescription>
-              {score && <h2>Your score: {score}</h2>}
+              {score && <p className="text-xl font-semibold text-black">Your score: {score}</p>}
               The timer has been paused. Please wait while we review your answers. Once the review is complete, you will be able to view any mistakes or return to the main menu to continue your practice. ❤️
             </DialogDescription>
           </DialogHeader>
