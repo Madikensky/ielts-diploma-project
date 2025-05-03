@@ -46,12 +46,6 @@ export const TestWidget: FC<TestWidgetProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {availableTests.length > 0 ? (
             availableTests.map((test) => {
-              const isCompleted = completedTests.some((test) => {
-                return isReading
-                  ? test.reading_id === test.reading_id
-                  : test.listening_id === test.listening_id;
-              });
-
               return (
                 <Card
                   key={isReading ? test.reading_id : test.listening_id}
@@ -67,32 +61,15 @@ export const TestWidget: FC<TestWidgetProps> = ({
                       Test {isReading ? test.reading_id : test.listening_id}
                     </CardTitle>
                     <CardDescription className="text-gray-100 text-xs">
-                      {isCompleted ? "Completed" : "Not attempted"}
+                      {"Not attempted"}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="p-3 flex-grow flex flex-col justify-between">
                     {
                       <div className="mb-2 text-xl flex items-center justify-center h-full">
-                        {isCompleted ? (
-                          <div className="flex items-center gap-1 text-green-600">
-                            <CheckCircle className="h-[20px] w-[20px]" />
-                            <span>
-                              Score:{" "}
-                              {
-                                completedTests.find((completedT) =>
-                                  isReading
-                                    ? test.reading_id === completedT.reading_id
-                                    : test.listening_id == test.listening_id,
-                                )?.score
-                              }{" "}
-                              / 9.0
-                            </span>
-                          </div>
-                        ) : (
                           <div className="flex items-center text-textCommon">
                             0.0 / 9.0
                           </div>
-                        )}
                       </div>
                     }
                     <Button
@@ -106,7 +83,7 @@ export const TestWidget: FC<TestWidgetProps> = ({
                         );
                       }}
                     >
-                      {isCompleted ? "Retake" : "Start"}
+                      {"Start"}
                       <ArrowRight className="ml-1 h-3 w-3" />
                     </Button>
                   </CardContent>

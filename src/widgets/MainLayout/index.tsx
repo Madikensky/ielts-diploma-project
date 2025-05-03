@@ -1,7 +1,9 @@
 "use client";
 
 import { Button as PrimaryButton } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { usePathname } from "@/i18n/routing";
+import { cn } from "@/shared/lib/utils";
 import { themeConfig } from "@/shared/theme/themeConfig";
 import { Loader } from "@/shared/ui/Loader";
 import {
@@ -28,6 +30,7 @@ interface MainLayoutProps {
   title: string;
   description?: string;
   score?: number;
+  isSubmitted?: boolean;
   onClick?: () => void;
   isStarted?: boolean;
 }
@@ -38,10 +41,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   description,
   score,
   isStarted,
+  isSubmitted,
   onClick,
 }) => {
   const [collapsed, setCollapsed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isDataSubmitted, setIsDataSubmitted] = useState(false);
   const [seconds, setSeconds] = useState(0);
   const router = useRouter();
   const locale = useLocale();
@@ -58,11 +63,19 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   useEffect(() => {
     if (isStarted) {
       const interval = setInterval(() => {
-        setSeconds((prev) => prev + 1)
+        if (!score && !isSubmitted) {
+          setSeconds((prev) => prev + 1)
+        }
       }, 1000)
       return () => clearInterval(interval)
     }
-  }, [isStarted])
+  }, [isStarted, score, isSubmitted])
+
+  useEffect(() => {
+    if (isSubmitted) {
+      setIsDataSubmitted(isSubmitted)
+    }
+  }, [isSubmitted])
 
   const formatTime = (numTime: number) => {
     const hours = Math.floor(numTime / 3600);
@@ -75,6 +88,21 @@ const MainLayout: React.FC<MainLayoutProps> = ({
 
   return (
     <ConfigProvider theme={themeConfig}>
+
+      <Dialog open={isDataSubmitted} onOpenChange={setIsDataSubmitted}>
+        <DialogContent className="text-textCommon  border-borderCommon rounded-lg">
+          <DialogHeader>
+            <DialogTitle>Congratulations!🎉 You&#39;ve finished your exam.</DialogTitle>
+            <DialogDescription>
+              {score && <span className="text-xl font-semibold text-black">Your score: {score} / 9.0</span>}
+              <br/>
+              The timer has been paused. Please wait while we review your answers. Once the review is complete, you will be able to view any mistakes or return to the main menu to continue your practice. ❤️
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+
+
       <Layout className="h-dvh overflow-auto">
         <Sider trigger={null} collapsible collapsed={collapsed} width={230}>
           <div className="flex flex-col h-full">
@@ -189,16 +217,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({
               <div className="flex justify-between font-semibold sticky top-0 bg-white p-6 z-10 shadow-sm items-center">
                 <h2 className="font-semibold text-2xl w-full flex justify-between">
                   <div>{title}</div>
-                  {isStarted && <div>Timer: {formatTime(seconds)}</div>}
+                  {isStarted && <div className={cn(isSubmitted && 'text-gray-400')}>Timer: {formatTime(seconds)}</div>}
                 </h2>
-                <div className="flex flex-col items-center justify-center">
-                  {/* <h2 className="text-xl">You've got {score || ""} / 40</h2> */}
-                  {score ? (
-                    <h2 className="text-xl text-textCommon">
-                      Your score is <span className="">{score}</span> / 9.0
-                    </h2>
-                  ) : null}
-                </div>
               </div>
               {!children && (
                 <div className="flex flex-col gap-6 p-6">
@@ -216,7 +236,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                   )}
                 </div>
               )}
-              <div className="p-6  border-red-500 h-full">{children}</div>
+              <div className="p-6 border-red-500 h-full">{children}</div>
             </Content>
           )}
           <div className="text-textCommon text-center pb-5">7Easy</div>

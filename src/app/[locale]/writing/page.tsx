@@ -47,13 +47,14 @@ const Writing: FC = () => {
         setIsLoading(true);
       }}
       isStarted={!!data}
+      isSubmitted={isAIAnswered}
     >
       {data ? (
         <>
           <p>
             Your essay topis is: <span className="font-bold">{data.task}</span>
           </p>
-          <div className="flex flex-row flex-1 min-h-[350px] border-blue-300 gap-5 mt-5">
+          <div className="flex flex-row flex-1 min-h-[350px] border-blue-300 gap-5 mt-5 p-5">
             <div className="flex flex-col gap-4 w-1/2">
               <Textarea
                 className="border-2 border-borderCommon rounded-xl w-full h-full flex flex-col gap-3"
@@ -68,7 +69,7 @@ const Writing: FC = () => {
                 <Button
                   type="button"
                   variant={"primary"}
-                  disabled={wordCount <= 1}
+                  disabled={wordCount <= 1 || isAIAnswered}
                   onClick={() => {
                     setIsAIAnswered(true);
                     submitWriting({
