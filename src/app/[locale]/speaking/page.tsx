@@ -29,10 +29,11 @@ const Speaking: FC = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number | null>(null);
   const [answers, setAnswers] = useState<TAnswer[]>([]);
 
-  const { data, refetch, isLoading } = useQuery<TStartSpeakingResponse>({
-    queryKey: ['speaking-start'],
-    queryFn: startSpeakingTest,
-    enabled: false,
+  const { data,  mutate, isPending } = useMutation<TStartSpeakingResponse>({
+    mutationKey: ['speaking-start'],
+    mutationFn: startSpeakingTest,
+    // enabled: false,
+    // staleTime: 0
   });
 
   const continueMutation = useMutation<TContinueSpeakingResponse, AxiosError, { answersRequest: TAnswer[], id: number }>({
@@ -208,7 +209,7 @@ const Speaking: FC = () => {
       title="Speaking"
       isSubmitted={isSubmitted}
       onClick={() => {
-        refetch();
+        mutate()
       }}
       score={finishMutation.data?.score}
       isStarted={!!data}
@@ -217,7 +218,7 @@ const Speaking: FC = () => {
       recommendations={finishMutation.data?.recommendations}
     >
       
-      {isLoading ? (
+      {isPending ? (
         <div className="flex justify-center items-center h-full">
           <Loader />
         </div>
