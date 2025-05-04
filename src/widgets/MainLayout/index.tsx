@@ -101,7 +101,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
           <DialogHeader>
             <DialogTitle className="mb-2">Congratulations!🎉 You&#39;ve finished your exam.</DialogTitle>
             <DialogDescription className="mt-2">
-              {<span className="text-xl font-semibold text-black">Your score: {score || '0'} / 9.0</span>}
+              {<span className="text-xl font-semibold text-black">Your score: {score || '...'} / 9.0</span>}
               <br/>
               <br/>
               The timer has been paused. Please wait while we review your answers. Once the review is complete, you will be able to view any mistakes or return to the main menu to continue your practice. ❤️
