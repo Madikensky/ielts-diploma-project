@@ -33,6 +33,10 @@ interface MainLayoutProps {
   isSubmitted?: boolean;
   onClick?: () => void;
   isStarted?: boolean;
+
+  areas?: string;
+  recommendations?: string;
+  strength?: string;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({
@@ -43,6 +47,9 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   isStarted,
   isSubmitted,
   onClick,
+  areas,
+  recommendations,
+  strength
 }) => {
   const [collapsed, setCollapsed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -92,11 +99,42 @@ const MainLayout: React.FC<MainLayoutProps> = ({
       <Dialog open={isDataSubmitted} onOpenChange={setIsDataSubmitted}>
         <DialogContent className="text-textCommon  border-borderCommon rounded-lg">
           <DialogHeader>
-            <DialogTitle>Congratulations!🎉 You&#39;ve finished your exam.</DialogTitle>
-            <DialogDescription>
-              {score && <span className="text-xl font-semibold text-black">Your score: {score} / 9.0</span>}
+            <DialogTitle className="mb-2">Congratulations!🎉 You&#39;ve finished your exam.</DialogTitle>
+            <DialogDescription className="mt-2">
+              {<span className="text-xl font-semibold text-black">Your score: {score || '0'} / 9.0</span>}
+              <br/>
               <br/>
               The timer has been paused. Please wait while we review your answers. Once the review is complete, you will be able to view any mistakes or return to the main menu to continue your practice. ❤️
+              {strength && recommendations && areas && <span className="">
+
+                <br/>
+                <br/>
+                <span>
+                    <span className="font-semibold text-black mb-1">Strengths</span>
+                    <br/>
+                    <span className="text-sm text-muted-foreground text-gray-700">
+                      {strength ? strength : 'No feedback...'}
+                    </span>
+                </span>
+                  <br/>
+                  <br/>
+                <span>
+                    <span className="font-semibold text-black mb-1">Areas for Improvement</span>
+                    <br/>
+                    <span className="text-sm text-muted-foreground text-gray-700">
+                      {areas ? areas : 'No feedback...'}
+                    </span>
+                </span>
+                  <br/>
+                  <br/>
+                <span>
+                    <span className="font-semibold text-black mb-1">Recommendations</span>
+                    <br/>
+                    <span className="text-sm text-muted-foreground text-gray-700">
+                      {recommendations ? recommendations : 'No feedback...'}
+                    </span>
+                  </span>
+              </span>}
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
