@@ -48,6 +48,7 @@ const Writing: FC = () => {
       }}
       isStarted={!!data}
       isSubmitted={isAIAnswered}
+      score={feedback?.score}
     >
       {data ? (
         <>

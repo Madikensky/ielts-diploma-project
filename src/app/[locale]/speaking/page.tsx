@@ -25,7 +25,6 @@ const Speaking: FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isRecording, setIsRecording] = useState<boolean>(false);
   const [isLastPart, setIsLastPart] = useState(false);
-  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const [questions, setQuestions] = useState<TQuestion[]>([]);
@@ -60,8 +59,6 @@ const Speaking: FC = () => {
       setIsSubmitted(true)
     }
   });
-
-  
 
   useEffect(() => {
     if (data) {
@@ -161,7 +158,6 @@ const Speaking: FC = () => {
 
       mediaRecorderRef.current.onstop = () => {
         const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
-        setAudioBlob(audioBlob);
 
         if (currentQuestionIndex !== null && currentQuestionIndex >= 0 && questions[currentQuestionIndex]) {
           const currQuestion = questions[currentQuestionIndex].id;
