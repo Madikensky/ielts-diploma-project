@@ -48,32 +48,6 @@ const Speaking: FC = () => {
       if (response.questions.length > 0) {
         setCurrentQuestionIndex(response.questions.length - 1);
         setAnswers([]);
-        const typingId = `typing_${Date.now()}`;
-        setMessages((prev) => [
-          ...prev,
-          {
-            id: typingId,
-            sender: 'ai',
-            text: 'Typing...',
-          },
-        ]);
-
-        setTimeout(() => {
-          setMessages((prev) => {
-            const typingMessage = prev.find(m => m.id === typingId);
-            if (!typingMessage) return prev;
-            return prev.map((m) =>
-              m.id === typingId
-                ? {
-                    id: `question_${response.questions[response.questions.length - 1].id}_${Date.now()}`,
-                    sender: 'ai',
-                    part: response.questions[response.questions.length - 1].part,
-                    text: response.questions[response.questions.length - 1].question,
-                  }
-                : m
-            );
-          });
-        }, 2500);
       }
     }
   });
@@ -87,11 +61,13 @@ const Speaking: FC = () => {
     }
   });
 
+  
+
   useEffect(() => {
     if (data) {
       setMessages([
         {
-          id: `intro_${Date.now()}`,  
+          id: `intro_${Date.now()}`,
           sender: 'ai',
           text: 'Welcome to the IELTS Speaking test simulation. I will ask you some questions, and you can respond by recording your voice. Let\'s start with Part 1 questions.',
         }
@@ -100,15 +76,6 @@ const Speaking: FC = () => {
         setQuestions(data.questions);
         const lastIndex = Math.min(data.questions.length - 1, data.questions.length - 1);
         setCurrentQuestionIndex(lastIndex);
-        const firstQuestion = data.questions[lastIndex];
-        setTimeout(() => {
-          setMessages((prev) => [...prev, {
-            id: `question_${firstQuestion.id}_${Date.now()}`,  // Add timestamp for uniqueness
-            sender: 'ai',
-            text: firstQuestion.question,
-            part: firstQuestion.part
-          }]);
-        }, 1000);
       }
     }
   }, [data]);
@@ -152,6 +119,33 @@ const Speaking: FC = () => {
       }
     }
   }, [currentQuestionIndex, questions]);
+
+  useEffect(() => {
+    if (finishMutation.isPending) {
+      setMessages((prev) => [...prev, {
+        text: 'Reviewing answers, please wait...',
+        id: 'review',
+        sender: 'ai',
+      }])
+    } else {
+      setMessages((prev) => [...prev, {
+        text: 'Thank you for the participation. Now you can review our conversation and return to main menu.',
+        id: 'thank',
+        sender: 'ai',
+      }])
+    }
+
+  }, [finishMutation.isPending])
+
+  useEffect(() => {
+    if (continueMutation.isPending) {
+      setMessages((prev) => [...prev, {
+        text: 'Generating for you part 3 questions, please wait...',
+        id: 'part3-generating',
+        sender: 'ai',
+      }])
+    }
+  }, [continueMutation.isPending])
 
   const startRecording = async () => {
     try {
