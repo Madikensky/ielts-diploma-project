@@ -205,8 +205,8 @@ const Speaking: FC = () => {
 
   return (
     <MainLayout
-      description="In this section, you'll practice the IELTS Speaking test by Speaking to real exam-style recordings and answering questions within a set time. You can track both completed and pending tests on this page. Completed tests can be retaken to work on mistakes, and if a test has already been completed, your highest score will be displayed."
-      title="Speaking"
+    description="In this section, you will interact with a speaking practice bot that simulates real IELTS exam conditions. The bot will ask you a series of exam-style questions, and you will respond by recording your voice answers. Once you complete the session, the bot will analyze your responses, assess your speaking skills across key IELTS criteria, and provide you with detailed feedback and suggestions for improvement. This interactive practice will help you track your progress, identify weaknesses, and become more confident for the real test."
+    title="Speaking"
       isSubmitted={isSubmitted}
       onClick={() => {
         mutate()
