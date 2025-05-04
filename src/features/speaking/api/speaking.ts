@@ -1,6 +1,5 @@
 import { baseApiInstance } from "@/shared/api";
-import { number } from "zod";
-import { TAnswer, TContinueSpeakingRequest } from "../model";
+import { TAnswer } from "../model";
 
 export const startSpeakingTest = async () => {
   const res = await baseApiInstance.get('/api/speaking/start');

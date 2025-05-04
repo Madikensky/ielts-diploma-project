@@ -1,16 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import MainLayout from "@/widgets/MainLayout";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { FC, useEffect, useState, useRef } from "react";
-import { AxiosError } from "axios";
-import { Loader } from "@/shared/ui/Loader";
 import { continueSpeakingTest, finishSpeakingTest, startSpeakingTest } from "@/features/speaking/api/speaking";
 import { TAnswer, TContinueSpeakingResponse, TFinishSpeakingResponse, TQuestion, TStartSpeakingResponse } from "@/features/speaking/model";
+import { Loader } from "@/shared/ui/Loader";
+import MainLayout from "@/widgets/MainLayout";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import { Mic, MicOff } from "lucide-react";
-import { DialogHeader } from "@/components/ui/dialog";
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { FC, useEffect, useRef, useState } from "react";
 
 interface Message {
   id: string;
@@ -30,7 +28,6 @@ const Speaking: FC = () => {
   const [questions, setQuestions] = useState<TQuestion[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number | null>(null);
   const [answers, setAnswers] = useState<TAnswer[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
 
   const { data, refetch, isLoading } = useQuery<TStartSpeakingResponse>({
     queryKey: ['speaking-start'],
@@ -54,8 +51,7 @@ const Speaking: FC = () => {
   const finishMutation = useMutation<TFinishSpeakingResponse, AxiosError, { answersRequest: TAnswer[], id: number }>({
     mutationKey: ['speaking-finish'],
     mutationFn: ({ answersRequest, id }) => finishSpeakingTest(answersRequest, id),
-    onSuccess: (response) => {
-      setIsOpen(true);
+    onSuccess: () => {
       setIsSubmitted(true)
     }
   });
