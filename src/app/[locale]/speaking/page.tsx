@@ -5,7 +5,7 @@ import { continueSpeakingTest, finishSpeakingTest, startSpeakingTest } from "@/f
 import { TAnswer, TContinueSpeakingResponse, TFinishSpeakingResponse, TQuestion, TStartSpeakingResponse } from "@/features/speaking/model";
 import { Loader } from "@/shared/ui/Loader";
 import MainLayout from "@/widgets/MainLayout";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { Mic, MicOff } from "lucide-react";
 import { FC, useEffect, useRef, useState } from "react";
