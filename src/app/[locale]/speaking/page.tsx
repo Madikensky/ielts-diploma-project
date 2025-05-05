@@ -67,8 +67,14 @@ const Speaking: FC = () => {
         }
       ]);
       if (data.questions && data.questions.length > 0) {
-        setQuestions(data.questions);
-        const lastIndex = Math.min(data.questions.length - 1, data.questions.length - 1);
+        const reorderedQuestions = [
+          data.questions.find((q) => q.part === 2),
+          ...data.questions.filter(q => q.part === 1),
+        ].filter((q): q is TQuestion => q !== undefined); // type guard
+        
+        setQuestions(reorderedQuestions);
+        
+        const lastIndex = Math.min(reorderedQuestions.length - 1, reorderedQuestions.length - 1);
         setCurrentQuestionIndex(lastIndex);
       }
     }
