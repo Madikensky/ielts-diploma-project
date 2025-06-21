@@ -5,7 +5,7 @@ export interface SignUpProps {
 }
 
 export const formSchema = z.object({
-  email: z.string().email("Please enter valid email."),
+  email: z.string(),
   password: z.string(),
   confirm_password: z.string(),
 });

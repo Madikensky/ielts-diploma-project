@@ -18,6 +18,7 @@ import { FC, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { signUp } from "../../api/signUp";
 import { Loader } from "@/shared/ui/Loader";
+import { toast } from "react-toastify";
 
 export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
   const mutation = useMutation({
@@ -26,9 +27,8 @@ export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
       window.location.reload();
     },
     onError: (e) => {
-      console.log(e);
       setIsLoading(false)
-      alert(e.message);
+      toast.error(e.message)
     },
     onSettled: () => {
     }
@@ -67,10 +67,10 @@ export const SignUp: FC<SignUpProps> = ({ onSwitch }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className="text-textCommon">Email</FormLabel>
+                  <FormLabel className="text-textCommon">Username</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="email@inbox.com"
+                      placeholder="Username"
                       className="rounded-[5px] border-borderCommon border-2"
                       {...field}
                     />
