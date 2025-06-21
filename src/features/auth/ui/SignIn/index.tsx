@@ -33,7 +33,7 @@ export const SignIn: FC<SignInProps> = ({ onSwitch }) => {
       toast.success('Credentials confirmed!')
       router.push(`/${locale}/home`);
     },
-    onError: (e) => {
+    onError: () => {
       toast.error('Wrong credentials!')
       setIsLoading(false)
     },
