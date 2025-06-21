@@ -21,6 +21,7 @@ import { FC, useState } from "react";
 import { signIn } from "../../api/signIn";
 import { formSchema, SignInFormValues, SignInProps } from "../../model/SignIn";
 import { Loader } from "@/shared/ui/Loader";
+  import { toast } from 'react-toastify';
 
 export const SignIn: FC<SignInProps> = ({ onSwitch }) => {
   const router = useRouter();
@@ -29,10 +30,11 @@ export const SignIn: FC<SignInProps> = ({ onSwitch }) => {
     mutationFn: signIn,
     onSuccess: (e: { token: string }) => {
       Cookies.set("access_token", e.token);
+      toast.success('Credentials confirmed!')
       router.push(`/${locale}/home`);
     },
-    onError: (e) => {
-      alert(e.message);
+    onError: () => {
+      toast.error('Wrong credentials!')
       setIsLoading(false)
     },
     onSettled: () => {
@@ -70,10 +72,10 @@ export const SignIn: FC<SignInProps> = ({ onSwitch }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className="text-textCommon">Email</FormLabel>
+                  <FormLabel className="text-textCommon">Username</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="email@inbox.com"
+                      placeholder="Username"
                       className="rounded-[5px] border-borderCommon border-2"
                       {...field}
                     />

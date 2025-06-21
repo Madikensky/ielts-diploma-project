@@ -16,6 +16,7 @@ interface Message {
   text?: string;
   part?: number;
   isAudio?: boolean;
+  question_id?: number;
 }
 
 const Speaking: FC = () => {
@@ -71,9 +72,7 @@ const Speaking: FC = () => {
           data.questions.find((q) => q.part === 2),
           ...data.questions.filter(q => q.part === 1),
         ].filter((q): q is TQuestion => q !== undefined); // type guard
-        
         setQuestions(reorderedQuestions);
-        
         const lastIndex = Math.min(reorderedQuestions.length - 1, reorderedQuestions.length - 1);
         setCurrentQuestionIndex(lastIndex);
       }
@@ -176,6 +175,7 @@ const Speaking: FC = () => {
             id: `user_response_${Date.now()}`,
             sender: 'user',
             isAudio: true,
+            question_id: currQuestion,
             // Store the question ID to reference the correct audio later
             part: questions[currentQuestionIndex].part
           };
@@ -248,7 +248,7 @@ const Speaking: FC = () => {
                         src={URL.createObjectURL(
                           // Find the corresponding answer audio blob
                           answers.find(answer => 
-                            answer.question_id === questions[index < questions.length ? index : questions.length - 1]?.id
+                            answer.question_id === message.question_id
                           )?.audio_file || new Blob()
                         )} 
                         type="audio/wav" 

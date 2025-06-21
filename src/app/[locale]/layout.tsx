@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { Metadata } from "next";
 import "../globals.css";
 import QueryProvider from "@/queryProvider";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "7Easy",
@@ -40,6 +41,7 @@ export default async function LocaleLayout({
       <body className={`${manrope.className} antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>
+            <ToastContainer/>
             <AntdRegistry>{children}</AntdRegistry>
           </QueryProvider>
         </NextIntlClientProvider>
