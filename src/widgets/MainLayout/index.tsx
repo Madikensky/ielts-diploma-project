@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { usePathname } from "@/i18n/routing";
 import { cn } from "@/shared/lib/utils";
 import { themeConfig } from "@/shared/theme/themeConfig";
+import { AnimatedDots } from "@/shared/ui/AnimatedDots";
 import { Loader } from "@/shared/ui/Loader";
 import {
   AudioOutlined,
@@ -101,7 +102,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
           <DialogHeader>
             <DialogTitle className="mb-2">Congratulations!🎉 You&#39;ve finished your exam.</DialogTitle>
             <DialogDescription className="mt-2">
-              {<span className="text-xl font-semibold text-black">Your score: {score || '...'} / 9.0</span>}
+              {<span className="text-xl font-semibold text-black">Your score: {score || <AnimatedDots/>} / 9.0</span>}
               <br/>
               <br/>
               The timer has been paused. Please wait while we review your answers. Once the review is complete, you will be able to view any mistakes or return to the main menu to continue your practice. ❤️
@@ -277,7 +278,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
               <div className="p-6 border-red-500 h-full">{children}</div>
             </Content>
           )}
-          <div className="text-textCommon text-center pb-5">7Easy</div>
+          {/* <div className="text-textCommon text-center pb-5">7Easy</div> */}
         </Layout>
       </Layout>
     </ConfigProvider>
